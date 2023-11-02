@@ -9,45 +9,15 @@ import java.util.List;
 
 public class C {
 
-	public static void solve(long[] arr, int n) {
-		sort(arr);
-		long sum = 0;
-		for (long e : arr) {
-			sum += e;
-		}
-		long ans = sum;
-		int l = 0, r = n - 1;
-		while (l < r) {
-			long tmp = arr[l];
-			arr[l] = arr[r];
-			arr[r] = tmp;
-			l++;
-			r--;
-		}
-		long lol = 0;
-		long temp = 0;
-		int i = 0;
-		for (long e : arr) {
-			temp += e;
-			sum -= e;
-			if (temp > sum) {
-				lol = (lol + temp - sum + 1) / 2;
-			}
-			ans = Math.min(ans, i + 1 + lol + sum);
-			lol = 0;
-			i++;
-		}
-		print(ans + "\n");
-		flush();
+	public static void solve() {
+
 	}
 
 	public static void main(String[] akash_sardar) throws IOException {
 		FastReader fr = new FastReader();
 		int tc = fr.readInteger();
 		for (int tt = 1; tt <= tc; tt++) {
-			int n = fr.readInteger();
-			long[] arr = fr.readLongArray(n);
-			solve(arr, n);
+
 		}
 	}
 

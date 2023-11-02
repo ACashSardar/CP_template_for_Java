@@ -90,20 +90,14 @@ public class Main {
         }
     }
 
-    static class FastWriter {
-        private PrintWriter pw;
+    static PrintWriter pw = new PrintWriter(System.out);
 
-        public FastWriter() {
-            pw = new PrintWriter(System.out);
-        }
+    public static void print(String s) {
+        pw.print(s);
+    }
 
-        public void print(String s) {
-            pw.print(s);
-        }
-
-        public void flush() {
-            pw.flush();
-        }
+    public static void flush() {
+        pw.flush();
     }
 
     public static void sort(int[] arr) {

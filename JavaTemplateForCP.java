@@ -193,7 +193,7 @@ public class JavaTemplateForCP {
 
 	/*** BINARY SEARCH ***/
 
-	public int binSearch(int lo, int hi, int[] arr, int key) {
+	public static int binSearch(int lo, int hi, int[] arr, int key) {
 		while (lo <= hi) {
 			int mid = lo + (hi - lo) / 2;
 			if (arr[mid] == key) {
@@ -207,7 +207,7 @@ public class JavaTemplateForCP {
 		return -1;
 	}
 
-	public int lowerBound(int lo, int hi, int[] arr, int key) {
+	public static int lowerBound(int lo, int hi, int[] arr, int key) {
 		while (lo <= hi) {
 			int mid = lo + (hi - lo) / 2;
 			if (arr[mid] < key) {
@@ -219,7 +219,7 @@ public class JavaTemplateForCP {
 		return lo;
 	}
 
-	public int upperBound(int lo, int hi, int[] arr, int key) {
+	public static int upperBound(int lo, int hi, int[] arr, int key) {
 		while (lo <= hi) {
 			int mid = lo + (hi - lo) / 2;
 			if (arr[mid] <= key) {
@@ -231,7 +231,7 @@ public class JavaTemplateForCP {
 		return lo;
 	}
 
-	public int binSearch(int lo, int hi, List<Integer> arr, int key) {
+	public static int binSearch(int lo, int hi, List<Integer> arr, int key) {
 		while (lo <= hi) {
 			int mid = lo + (hi - lo) / 2;
 			if (arr.get(mid) == key) {
@@ -245,7 +245,7 @@ public class JavaTemplateForCP {
 		return -1;
 	}
 
-	public int lowerBound(int lo, int hi, List<Integer> list, int key) {
+	public static int lowerBound(int lo, int hi, List<Integer> list, int key) {
 		while (lo <= hi) {
 			int mid = lo + (hi - lo) / 2;
 			if (list.get(mid) < key) {
@@ -257,7 +257,7 @@ public class JavaTemplateForCP {
 		return lo;
 	}
 
-	public int upperBound(int lo, int hi, List<Integer> list, int key) {
+	public static int upperBound(int lo, int hi, List<Integer> list, int key) {
 		while (lo <= hi) {
 			int mid = lo + (hi - lo) / 2;
 			if (list.get(mid) <= key) {

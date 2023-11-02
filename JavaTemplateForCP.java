@@ -323,14 +323,13 @@ public class JavaTemplateForCP {
 	}
 
 	/*** SEGMENT TREE ***/
-	static class SegmentTree {
+	static class SegTree {
 		int[] seg;
 
-		public SegmentTree(int size) {
+		public SegTree(int size) {
 			seg = new int[size + 1];
 		}
 
-		// T.C : O(N)
 		public void build(int ind, int lo, int hi, int[] arr) {
 			if (lo == hi) {
 				seg[ind] = arr[lo];
@@ -342,25 +341,18 @@ public class JavaTemplateForCP {
 			seg[ind] = Math.max(seg[2 * ind + 1], seg[2 * ind + 2]);
 		}
 
-		// T.C : O(Log(N))
-		// l, r for query
 		public int query(int ind, int lo, int hi, int l, int r, int[] arr) {
-			// case 1: complete overlap
 			if (lo >= l && hi <= r) {
 				return seg[ind];
-			}
-			// case 3: no overlap
-			else if (hi < l || lo > r) {
+			} else if (hi < l || lo > r) {
 				return Integer.MIN_VALUE;
 			}
-			// partial overlap
 			int mid = lo + (hi - lo) / 2;
 			int left = query(2 * ind + 1, lo, mid, l, r, arr);
 			int right = query(2 * ind + 2, mid + 1, hi, l, r, arr);
 			return Math.max(left, right);
 		}
 
-		// T.C : O(Log(N))
 		public void update(int ind, int lo, int hi, int i, int val, int[] arr) {
 			if (lo == hi) {
 				seg[ind] = arr[i] = val;
@@ -373,6 +365,75 @@ public class JavaTemplateForCP {
 				update(2 * ind + 2, mid + 1, hi, i, val, arr);
 			}
 			seg[ind] = Math.max(seg[2 * ind + 1], seg[2 * ind + 2]);
+		}
+	}
+
+	/*** LAZY PROPAGATION (RANGE UPDATE) ***/
+
+	static class SegTreeLazy {
+		int[] seg;
+		int[] lazy;
+
+		public SegTreeLazy(int size) {
+			seg = new int[size + 1];
+			lazy = new int[size + 1];
+		}
+
+		public void build(int ind, int lo, int hi, int[] arr) {
+			if (lo == hi) {
+				seg[ind] = arr[lo];
+				return;
+			}
+			int mid = lo + (hi - lo) / 2;
+			build(2 * ind + 1, lo, mid, arr);
+			build(2 * ind + 2, mid + 1, hi, arr);
+			seg[ind] = seg[2 * ind + 1] + seg[2 * ind + 2];
+		}
+
+		public void update(int ind, int lo, int hi, int l, int r, int val, int[] arr) {
+			if (lazy[ind] != 0) {
+				seg[ind] += (hi - lo + 1) * lazy[ind];
+				if (lo != hi) {
+					lazy[2 * ind + 1] += lazy[ind];
+					lazy[2 * ind + 2] += lazy[ind];
+				}
+				lazy[ind] = 0;
+			}
+			if (hi < l || lo > r) {
+				return;
+			}
+			if (lo >= l && hi <= r) {
+				seg[ind] += (hi - lo + 1) * val;
+				if (lo != hi) {
+					lazy[2 * ind + 1] += val;
+					lazy[2 * ind + 2] += val;
+				}
+				return;
+			}
+			int mid = lo + (hi - lo) / 2;
+			update(2 * ind + 1, lo, mid, l, r, val, arr);
+			update(2 * ind + 2, mid + 1, hi, l, r, val, arr);
+			seg[ind] = seg[2 * ind + 1] + seg[2 * ind + 2];
+		}
+
+		public int query(int ind, int lo, int hi, int l, int r, int[] arr) {
+			if (lazy[ind] != 0) {
+				seg[ind] += (hi - lo + 1) * lazy[ind];
+				if (lo != hi) {
+					lazy[2 * ind + 1] += lazy[ind];
+					lazy[2 * ind + 2] += lazy[ind];
+				}
+				lazy[ind] = 0;
+			}
+			if (lo >= l && hi <= r) {
+				return seg[ind];
+			} else if (hi < l || lo > r) {
+				return 0;
+			}
+			int mid = lo + (hi - lo) / 2;
+			int left = query(2 * ind + 1, lo, mid, l, r, arr);
+			int right = query(2 * ind + 2, mid + 1, hi, l, r, arr);
+			return left + right;
 		}
 	}
 

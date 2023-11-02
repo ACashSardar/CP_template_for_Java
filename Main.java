@@ -13,7 +13,7 @@ public class Main {
 
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] akash_sardar) throws IOException {
         FastReader fr = new FastReader();
         int tc = fr.readInteger();
         for (int tt = 1; tt <= tc; tt++) {

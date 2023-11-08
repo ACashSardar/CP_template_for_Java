@@ -3,23 +3,25 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
 public class A {
-	public static void solve() {
+
+	public static void solve() throws IOException {
 
 	}
 
 	public static void main(String[] akash_sardar) throws IOException {
-		FastReader fr = new FastReader();
 		int tc = fr.readInteger();
 		for (int tt = 1; tt <= tc; tt++) {
-
+			solve();
 		}
 	}
+
+	private static FastReader fr = new FastReader();
+	private static PrintWriter pw = new PrintWriter(System.out);
 
 	static class FastReader {
 		private BufferedReader br;
@@ -90,8 +92,6 @@ public class A {
 		}
 	}
 
-	static PrintWriter pw = new PrintWriter(System.out);
-
 	public static void print(String s) {
 		pw.print(s);
 	}
@@ -103,6 +103,15 @@ public class A {
 	public static void sort(int[] arr) {
 		List<Integer> list = new ArrayList<>();
 		for (int e : arr)
+			list.add(e);
+		Collections.sort(list);
+		for (int i = 0; i < arr.length; i++)
+			arr[i] = list.get(i);
+	}
+
+	public static void sort(long[] arr) {
+		List<Long> list = new ArrayList<>();
+		for (long e : arr)
 			list.add(e);
 		Collections.sort(list);
 		for (int i = 0; i < arr.length; i++)

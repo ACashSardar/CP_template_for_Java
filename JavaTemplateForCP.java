@@ -9,20 +9,23 @@ import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.Stack;
 
 public class JavaTemplateForCP {
 
-	public static void solve() {
+	public static void solve() throws IOException {
 
 	}
 
-	public static void main(String[] args) throws IOException {
-		FastReader fr = new FastReader();
+	public static void main(String[] akash_sardar) throws IOException {
 		int tc = fr.readInteger();
 		for (int tt = 1; tt <= tc; tt++) {
-
+			solve();
 		}
 	}
+
+	private static FastReader fr = new FastReader();
+	private static PrintWriter pw = new PrintWriter(System.out);
 
 	static class FastReader {
 		private BufferedReader br;
@@ -93,8 +96,6 @@ public class JavaTemplateForCP {
 		}
 	}
 
-	static PrintWriter pw = new PrintWriter(System.out);
-
 	public static void print(String s) {
 		pw.print(s);
 	}
@@ -158,6 +159,21 @@ public class JavaTemplateForCP {
 			}
 		}
 		return true;
+	}
+
+	static boolean[] primes;
+
+	public static void sieve(int size) {
+		primes = new boolean[size + 1];
+		Arrays.fill(primes, true);
+		primes[0] = primes[1] = false;
+		for (int i = 2; i <= size; i++) {
+			if (!primes[i])
+				continue;
+			for (int j = 2 * i; j <= size; j += i) {
+				primes[j] = false;
+			}
+		}
 	}
 
 	public int getMEX(int[] arr) {
@@ -465,5 +481,22 @@ public class JavaTemplateForCP {
 		Collections.sort(list, cmp);
 		for (int i = 0; i < arr.length; i++)
 			arr[i] = list.get(i);
+	}
+
+	/*** NEXT GREATER ELEMENT ***/
+	public static void getNGE(int[] arr, int n) {
+		int[] nge = new int[n];
+		Stack<Integer> stk = new Stack<>();
+		for (int i = n - 1; i >= 0; i--) {
+			while (!stk.isEmpty() && arr[stk.peek()] <= arr[i]) {
+				stk.pop();
+			}
+			if (!stk.isEmpty()) {
+				nge[i] = stk.peek();
+			} else {
+				nge[i] = n;
+			}
+			stk.push(i);
+		}
 	}
 }

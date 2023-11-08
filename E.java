@@ -9,17 +9,19 @@ import java.util.List;
 
 public class E {
 
-	public static void solve() {
+	public static void solve() throws IOException {
 
 	}
 
 	public static void main(String[] akash_sardar) throws IOException {
-		FastReader fr = new FastReader();
 		int tc = fr.readInteger();
-		while (tc-- > 0) {
-
+		for (int tt = 1; tt <= tc; tt++) {
+			solve();
 		}
 	}
+
+	private static FastReader fr = new FastReader();
+	private static PrintWriter pw = new PrintWriter(System.out);
 
 	static class FastReader {
 		private BufferedReader br;
@@ -89,8 +91,6 @@ public class E {
 			return list;
 		}
 	}
-
-	static PrintWriter pw = new PrintWriter(System.out);
 
 	public static void print(String s) {
 		pw.print(s);

@@ -11,17 +11,26 @@ import java.util.List;
 import java.util.Set;
 import java.util.Stack;
 
-public class JavaTemplateForCP {
+public class JavaTemplateForCP implements Runnable {
 
-	public static void solve() throws IOException {
+	public static void _akash_sardar() throws IOException {
 
 	}
 
-	public static void main(String[] akash_sardar) throws IOException {
-		int tc = fr.readInteger();
-		for (int tt = 1; tt <= tc; tt++) {
-			solve();
+	public void run() {
+		try {
+			int tc = fr.readInteger();
+			for (int tt = 1; tt <= tc; tt++) {
+				_akash_sardar();
+				flush();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+	}
+
+	public static void main(String[] args) throws IOException {
+		new Thread(null, new JavaTemplateForCP(), "Akash", 1 << 30).start();
 	}
 
 	private static FastReader fr = new FastReader();
@@ -136,6 +145,18 @@ public class JavaTemplateForCP {
 		if (b % 2 == 0)
 			return temp;
 		return mul(a, temp);
+	}
+
+	public static long binExpItr(long a, long b) {
+		long ans = 1;
+		for (int i = 0; i < 62; i++) {
+			long bit = (b >> i) & 1L;
+			if (bit == 1L) {
+				ans = mul(ans, a);
+			}
+			a = mul(a, a);
+		}
+		return ans;
 	}
 
 	public static int gcd(int a, int b) {

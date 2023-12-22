@@ -7,17 +7,26 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class C {
+public class C implements Runnable {
 
-	public static void solve() throws IOException {
+	public static void _akash_sardar() throws IOException {
 
 	}
 
-	public static void main(String[] akash_sardar) throws IOException {
-		int tc = fr.readInteger();
-		for (int tt = 1; tt <= tc; tt++) {
-			solve();
+	public void run() {
+		try {
+			int tc = fr.readInteger();
+			for (int tt = 1; tt <= tc; tt++) {
+				_akash_sardar();
+				flush();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+	}
+
+	public static void main(String[] args) throws IOException {
+		new Thread(null, new C(), "Akash", 1 << 30).start();
 	}
 
 	private static FastReader fr = new FastReader();

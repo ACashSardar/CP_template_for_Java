@@ -10,8 +10,7 @@ import java.util.List;
 public class A implements Runnable {
 
 	public static void main() throws IOException {
-		int n = fr.readInteger();
-		print((n + 1) + "\n");
+
 	}
 
 	public void run() {

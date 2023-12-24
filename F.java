@@ -9,31 +9,15 @@ import java.util.List;
 
 public class F implements Runnable {
 
-	public static void _akash_sardar() throws IOException {
-		int n = fr.readInteger();
-		long[] a = fr.readLongArray(n);
-		long sum = 0;
-		for (int i = 0; i < n; i++) {
-			for (int j = 0; j < n; j++) {
-				for (int k = 0; k < n; k++) {
-					for (int l = 0; l < n; l++) {
-						long x = (a[i] & a[j]);
-						long y = (a[l] | a[k]);
-						sum += x * y;
-						print(a[i] + " & " + a[j] + " x=" + x + "   " + " * " + a[j] + " | " + a[k] + " y=" + y + "\n");
-					}
-				}
-			}
-		}
+	public static void main() throws IOException {
 
-		print(sum + "\n");
 	}
 
 	public void run() {
 		try {
 			int tc = fr.readInteger();
 			for (int tt = 1; tt <= tc; tt++) {
-				_akash_sardar();
+				main();
 				flush();
 			}
 		} catch (Exception e) {
@@ -42,7 +26,7 @@ public class F implements Runnable {
 	}
 
 	public static void main(String[] args) throws IOException {
-		new Thread(null, new F(), "Akash", 1 << 30).start();
+		new Thread(null, new F(), "akashsardar383@gmail.com", 1 << 30).start();
 	}
 
 	private static FastReader fr = new FastReader();

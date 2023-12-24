@@ -9,7 +9,7 @@ import java.util.List;
 
 public class B implements Runnable {
 
-	public static void _akash_sardar() throws IOException {
+	public static void main() throws IOException {
 
 	}
 
@@ -17,7 +17,7 @@ public class B implements Runnable {
 		try {
 			int tc = fr.readInteger();
 			for (int tt = 1; tt <= tc; tt++) {
-				_akash_sardar();
+				main();
 				flush();
 			}
 		} catch (Exception e) {
@@ -26,7 +26,7 @@ public class B implements Runnable {
 	}
 
 	public static void main(String[] args) throws IOException {
-		new Thread(null, new B(), "Akash", 1 << 30).start();
+		new Thread(null, new B(), "akashsardar383@gmail.com", 1 << 30).start();
 	}
 
 	private static FastReader fr = new FastReader();

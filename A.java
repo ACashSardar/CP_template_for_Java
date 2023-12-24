@@ -9,15 +9,16 @@ import java.util.List;
 
 public class A implements Runnable {
 
-	public static void LazerKitty() throws IOException {
-
+	public static void main() throws IOException {
+		int n = fr.readInteger();
+		print((n + 1) + "\n");
 	}
 
 	public void run() {
 		try {
 			int tc = fr.readInteger();
 			for (int tt = 1; tt <= tc; tt++) {
-				LazerKitty();
+				main();
 				flush();
 			}
 		} catch (Exception e) {
@@ -26,7 +27,7 @@ public class A implements Runnable {
 	}
 
 	public static void main(String[] args) throws IOException {
-		new Thread(null, new A(), "Akash", 1 << 30).start();
+		new Thread(null, new A(), "akashsardar383@gmail.com", 1 << 30).start();
 	}
 
 	private static FastReader fr = new FastReader();

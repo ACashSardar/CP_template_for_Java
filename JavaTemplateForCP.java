@@ -13,7 +13,7 @@ import java.util.Stack;
 
 public class JavaTemplateForCP implements Runnable {
 
-	public static void _akash_sardar() throws IOException {
+	public static void main() throws IOException {
 
 	}
 
@@ -21,7 +21,7 @@ public class JavaTemplateForCP implements Runnable {
 		try {
 			int tc = fr.readInteger();
 			for (int tt = 1; tt <= tc; tt++) {
-				_akash_sardar();
+				main();
 				flush();
 			}
 		} catch (Exception e) {
@@ -30,7 +30,7 @@ public class JavaTemplateForCP implements Runnable {
 	}
 
 	public static void main(String[] args) throws IOException {
-		new Thread(null, new JavaTemplateForCP(), "Akash", 1 << 30).start();
+		new Thread(null, new JavaTemplateForCP(), "akashsardar383@gmail.com", 1 << 30).start();
 	}
 
 	private static FastReader fr = new FastReader();

@@ -15,7 +15,8 @@ public class E implements Runnable {
 
 	public void run() {
 		try {
-			int tc = fr.readInteger();
+			boolean hasTestCases = true;
+			int tc = hasTestCases ? fr.readInteger() : 1;
 			for (int tt = 1; tt <= tc; tt++) {
 				main();
 				flush();

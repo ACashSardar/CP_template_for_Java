@@ -137,4 +137,8 @@ public class A implements Runnable {
 			arr[i] = list.get(i);
 	}
 
+	public static long ceil(long a, long b) {
+		return a % b == 0 ? a / b : (1 + a / b);
+	}
+
 }

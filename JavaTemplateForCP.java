@@ -116,7 +116,7 @@ public class JavaTemplateForCP implements Runnable {
 
 	/*** MATH / NUMBER THEORY ***/
 
-	static int MOD = 1000000007;
+	public static long MOD = 1000000007;
 
 	public static long add(long a, long b) {
 		return (a + b) % MOD;
@@ -160,7 +160,7 @@ public class JavaTemplateForCP implements Runnable {
 		return ans;
 	}
 
-	public static int gcd(int a, int b) {
+	public static long gcd(long a, long b) {
 		if (a == 0)
 			return b;
 		if (b == 0)
@@ -170,7 +170,7 @@ public class JavaTemplateForCP implements Runnable {
 		return gcd(b % a, a);
 	}
 
-	public static int lcm(int a, int b) {
+	public static long lcm(long a, long b) {
 		return (a * b) / gcd(a, b);
 	}
 
@@ -476,7 +476,6 @@ public class JavaTemplateForCP implements Runnable {
 	}
 
 	/*** SORTING ***/
-	// Arrays.sort() is bad
 
 	public static void sort(int[] arr) {
 		List<Integer> list = new ArrayList<>();
@@ -506,6 +505,7 @@ public class JavaTemplateForCP implements Runnable {
 	}
 
 	/*** NEXT GREATER ELEMENT ***/
+
 	public static void getNGE(int[] arr, int n) {
 		int[] nge = new int[n];
 		Stack<Integer> stk = new Stack<>();

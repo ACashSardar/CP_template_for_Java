@@ -160,6 +160,20 @@ public class JavaTemplateForCP implements Runnable {
 		return ans;
 	}
 
+	public static long sqrtFloor(long a) {
+		long lo = 0;
+		long hi = 1000000000L;
+		while (lo <= hi) {
+			long mid = lo + (hi - lo) / 2;
+			if (mid * mid <= a) {
+				lo = mid + 1;
+			} else {
+				hi = mid - 1;
+			}
+		}
+		return lo - 1;
+	}
+
 	public static long gcd(long a, long b) {
 		if (a == 0)
 			return b;

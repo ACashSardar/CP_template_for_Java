@@ -140,4 +140,18 @@ public class F implements Runnable {
 	public static long ceil(long a, long b) {
 		return a % b == 0 ? a / b : (1 + a / b);
 	}
+
+	public static long sqrtFloor(long a) {
+		long lo = 0;
+		long hi = 1000000000L;
+		while (lo <= hi) {
+			long mid = lo + (hi - lo) / 2;
+			if (mid * mid <= a) {
+				lo = mid + 1;
+			} else {
+				hi = mid - 1;
+			}
+		}
+		return lo - 1;
+	}
 }

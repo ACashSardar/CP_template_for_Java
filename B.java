@@ -9,6 +9,8 @@ import java.util.List;
 
 public class B implements Runnable {
 
+	public static long MOD = 1000000007;
+
 	public static void main() throws IOException {
 
 	}
@@ -55,7 +57,7 @@ public class B implements Runnable {
 		public char readCharacter() throws IOException {
 			String s = this.br.readLine();
 			if (s.length() > 1) {
-				throw new IOException("Invalid Character!");
+				throw new IOException("Invalid Character");
 			}
 			return s.charAt(0);
 		}
@@ -67,7 +69,7 @@ public class B implements Runnable {
 		public int[] readArray(int n) throws IOException {
 			String[] strArr = this.br.readLine().split(" ");
 			if (strArr.length != n) {
-				throw new IOException("Invalid array size!");
+				throw new IOException("Invalid array size");
 			}
 			int[] arr = new int[n];
 			for (int i = 0; i < n; i++) {
@@ -79,7 +81,7 @@ public class B implements Runnable {
 		public long[] readLongArray(int n) throws IOException {
 			String[] strArr = this.br.readLine().split(" ");
 			if (strArr.length != n) {
-				throw new IOException("Invalid array size!");
+				throw new IOException("Invalid array size");
 			}
 			long[] arr = new long[n];
 			for (int i = 0; i < n; i++) {
@@ -135,6 +137,66 @@ public class B implements Runnable {
 		Collections.sort(list, cmp);
 		for (int i = 0; i < arr.length; i++)
 			arr[i] = list.get(i);
+	}
+
+	public static long add(long a, long b) {
+		return (a + b) % MOD;
+	}
+
+	public static long sub(long a, long b) {
+		if (a < b)
+			return (MOD + a - b) % MOD;
+		return (a - b) % MOD;
+	}
+
+	public static long mul(long a, long b) {
+		return (a * b) % MOD;
+	}
+
+	public static long div(long a, long b) {
+		a = a % MOD;
+		long inv_b = binExp(b, MOD - 2);
+		return mul(a, inv_b);
+	}
+
+	public static long binExp(long a, long b) {
+		if (b == 0)
+			return 1;
+		long half = binExp(a, b / 2);
+		long temp = mul(half, half);
+		if (b % 2 == 0)
+			return temp;
+		return mul(a, temp);
+	}
+
+	public static long binExpItr(long a, long b) {
+		long ans = 1;
+		for (int i = 0; i < 62; i++) {
+			long bit = (b >> i) & 1L;
+			if (bit == 1L) {
+				ans = mul(ans, a);
+			}
+			a = mul(a, a);
+		}
+		return ans;
+	}
+
+	public static long gcd(long a, long b) {
+		if (a == 0)
+			return b;
+		if (b == 0)
+			return a;
+		if (b < a)
+			return gcd(a % b, b);
+		return gcd(b % a, a);
+	}
+
+	public static long lcm(long a, long b) {
+		return (a * b) / gcd(a, b);
+	}
+
+	public static long log(long a, long b) {
+		return (long) (Math.log(a) / Math.log(b));
 	}
 
 	public static long ceil(long a, long b) {

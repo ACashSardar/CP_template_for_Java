@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 
 public class F implements Runnable {
 
@@ -36,6 +37,7 @@ public class F implements Runnable {
 	private static PrintWriter pw = new PrintWriter(System.out);
 
 	static class FastReader {
+
 		private BufferedReader br;
 
 		public FastReader() {
@@ -56,9 +58,8 @@ public class F implements Runnable {
 
 		public char readCharacter() throws IOException {
 			String s = this.br.readLine();
-			if (s.length() > 1) {
+			if (s.length() > 1)
 				throw new IOException("Invalid Character");
-			}
 			return s.charAt(0);
 		}
 
@@ -68,25 +69,21 @@ public class F implements Runnable {
 
 		public int[] readArray(int n) throws IOException {
 			String[] strArr = this.br.readLine().split(" ");
-			if (strArr.length != n) {
+			if (strArr.length != n)
 				throw new IOException("Invalid array size");
-			}
 			int[] arr = new int[n];
-			for (int i = 0; i < n; i++) {
+			for (int i = 0; i < n; i++)
 				arr[i] = Integer.parseInt(strArr[i]);
-			}
 			return arr;
 		}
 
 		public long[] readLongArray(int n) throws IOException {
 			String[] strArr = this.br.readLine().split(" ");
-			if (strArr.length != n) {
+			if (strArr.length != n)
 				throw new IOException("Invalid array size");
-			}
 			long[] arr = new long[n];
-			for (int i = 0; i < n; i++) {
+			for (int i = 0; i < n; i++)
 				arr[i] = Long.parseLong(strArr[i]);
-			}
 			return arr;
 		}
 
@@ -97,15 +94,32 @@ public class F implements Runnable {
 		public List<Integer> readList() throws IOException {
 			String[] strArr = this.br.readLine().split(" ");
 			List<Integer> list = new ArrayList<>();
-			for (int i = 0; i < strArr.length; i++) {
+			for (int i = 0; i < strArr.length; i++)
 				list.add(Integer.parseInt(strArr[i]));
-			}
 			return list;
 		}
 	}
 
 	public static void print(String s) {
 		pw.print(s);
+	}
+
+	public static <K, V> void debug(Map<K, V> map) {
+		for (var itr : map.entrySet())
+			print(itr.getKey() + " : " + itr.getValue() + "\n");
+		print("\n");
+	}
+
+	public static void debug(int[] arr) {
+		for (int e : arr)
+			print(e + " ");
+		print("\n");
+	}
+
+	public static void debug(long[] arr) {
+		for (long e : arr)
+			print(e + " ");
+		print("\n");
 	}
 
 	public static void flush() {
@@ -208,11 +222,10 @@ public class F implements Runnable {
 		long hi = 1000000000L;
 		while (lo <= hi) {
 			long mid = lo + (hi - lo) / 2;
-			if (mid * mid <= a) {
+			if (mid * mid <= a)
 				lo = mid + 1;
-			} else {
+			else
 				hi = mid - 1;
-			}
 		}
 		return lo - 1;
 	}

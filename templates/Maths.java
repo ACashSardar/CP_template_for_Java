@@ -2,6 +2,7 @@ package templates;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 public class Maths {
@@ -84,6 +85,21 @@ public class Maths {
             for (int j = 2 * i; j <= size; j += i) {
                 primes[j] = false;
             }
+        }
+    }
+
+    public static void getPrimeFactors(Map<Long, Integer> primeFatctors, long num) {
+        long temp = num;
+        for (long i = 0; i * i <= num; i++) {
+            if (!primes[(int) i])
+                continue;
+            int cnt = 0;
+            while (temp % i == 0) {
+                cnt++;
+                temp /= i;
+            }
+            if (cnt > 0)
+                primeFatctors.put(i, cnt);
         }
     }
 

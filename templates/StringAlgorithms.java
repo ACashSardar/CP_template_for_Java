@@ -1,5 +1,8 @@
 package templates;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class StringAlgorithms {
 
     public static boolean kmpSearch(String txt, String pat) {
@@ -31,7 +34,7 @@ public class StringAlgorithms {
         return i == m;
     }
 
-    public static int[] kmpPos(String txt, String pat) {
+    public static void kmpPos(String txt, String pat, List<Integer> ans) {
         int n = txt.length();
         int m = pat.length();
         int[] lps = new int[m];
@@ -55,19 +58,21 @@ public class StringAlgorithms {
                 i = lps[i - 1];
             if (pat.charAt(i) == txt.charAt(j))
                 i++;
+            if (i == m) {
+                ans.add(j - m + 1);
+                i = lps[i - 1];
+            }
             j++;
         }
-        if (i != m)
-            return new int[0];
-        int r = j - 1;
-        int l = r - n + 1;
-        return new int[] { l, r };
     }
 
     public static void main(String[] args) {
-        String txt = "abxabcabcaby";
-        String pat = "abcaby";
+        String txt = "akadfakakacakkkakag";
+        String pat = "aka";
         System.out.println(kmpSearch(txt, pat));
+        List<Integer> list = new ArrayList<>();
+        kmpPos(txt, pat, list);
+        System.out.println(list);
     }
 
 }

@@ -16,6 +16,7 @@ public class Main implements Runnable {
 
     }
 
+    @Override
     public void run() {
         try {
             boolean hasTestCases = true;

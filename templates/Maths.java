@@ -73,17 +73,32 @@ public class Maths {
 
     /*** PRIME NUMBERS & SIEVE ***/
 
-    public static boolean[] primes;
+    public static boolean[] isPrime;
 
     public static void sieve(int size) {
-        primes = new boolean[size + 1];
-        Arrays.fill(primes, true);
-        primes[0] = primes[1] = false;
+        isPrime = new boolean[size + 1];
+        Arrays.fill(isPrime, true);
+        isPrime[0] = isPrime[1] = false;
         for (int i = 2; i <= size; i++) {
-            if (!primes[i])
+            if (!isPrime[i])
                 continue;
             for (int j = 2 * i; j <= size; j += i) {
-                primes[j] = false;
+                isPrime[j] = false;
+            }
+        }
+    }
+
+    public static int[] spf;
+
+    public static void getSmallestPrimeFactors(int size) {
+        spf = new int[size + 1];
+        for (int i = 0; i <= size; i++)
+            spf[i] = i;
+        for (int i = 2; i <= size; i++) {
+            if (spf[i] < i)
+                continue;
+            for (int j = 2 * i; j <= size; j += i) {
+                spf[j] = Math.min(spf[j], i);
             }
         }
     }
@@ -91,7 +106,7 @@ public class Maths {
     public static void getPrimeFactors(Map<Long, Integer> primeFatctors, long num) {
         long temp = num;
         for (long i = 0; i * i <= num; i++) {
-            if (!primes[(int) i])
+            if (!isPrime[(int) i])
                 continue;
             int cnt = 0;
             while (temp % i == 0) {

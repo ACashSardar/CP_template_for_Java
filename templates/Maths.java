@@ -147,7 +147,7 @@ public class Maths {
 
     /*** MEX ***/
 
-    public int getMEX(int[] arr) {
+    public static int getMEX(int[] arr) {
         Set<Integer> set = new HashSet<>();
         for (int e : arr)
             set.add(e);

@@ -51,40 +51,111 @@ public class Graph {
         }
     }
 
-    public static void dijkstra(List<List<Node>> graph, int n, int u, int v) {
-        Queue<Node> q = new PriorityQueue<>((a, b) -> a.wt - b.wt == 0 ? a.v - b.v : a.wt - b.wt);
+    public static int[] dijkstra(List<List<Node>> graph, int n, int src) {
+        Queue<Node> q = new PriorityQueue<>((a, b) -> a.wt - b.wt);
         int[] dist = new int[n + 1];
-        Arrays.fill(dist, 1000000000);
-        dist[u] = 0;
-        q.add(new Node(u, u, 0));
+        Arrays.fill(dist, Integer.MAX_VALUE);
+        dist[src] = 0;
+        q.add(new Node(src, src, 0));
         while (!q.isEmpty()) {
-
+            Node curr = q.poll();
+            int u = curr.v;
+            for (Node child : graph.get(u)) {
+                int v = child.v;
+                int wt = child.wt;
+                if (dist[u] + wt < dist[v]) {
+                    dist[v] = dist[u] + wt;
+                    q.add(new Node(u, v, dist[v]));
+                }
+            }
         }
+        return dist;
+    }
+
+    public static int[][] floydWarshall(int[][] dist) {
+        int n = dist.length;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (dist[i][j] == -1)
+                    dist[i][j] = 99999999;
+            }
+        }
+
+        for (int via = 0; via < n; via++) {
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < n; j++) {
+                    dist[i][j] = Math.min(dist[i][j], dist[i][via] + dist[via][j]);
+                }
+            }
+        }
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (dist[i][j] == 99999999)
+                    dist[i][j] = -1;
+            }
+        }
+        return dist;
     }
 
     public static void main(String[] args) {
+        test_dfs();
+        test_bfs();
+        test_dijkstra();
+    }
+
+    public static void test_dfs() {
         int n = 6;
         List<List<Integer>> graph = new ArrayList<>();
         for (int i = 0; i <= n; i++) {
             graph.add(new ArrayList<>());
         }
-        graph.get(1).add(2);
-        graph.get(2).add(1);
-        graph.get(1).add(3);
-        graph.get(3).add(1);
-        graph.get(3).add(4);
-        graph.get(4).add(3);
-        graph.get(4).add(5);
-        graph.get(5).add(4);
-        graph.get(2).add(6);
-        graph.get(6).add(2);
-        graph.get(2).add(4);
-        graph.get(4).add(2);
+        int[][] edges = { { 1, 2 }, { 1, 3 }, { 3, 4 }, { 4, 5 }, { 2, 6 }, { 2, 4 } };
+        for (int[] edge : edges) {
+            graph.get(edge[0]).add(edge[1]);
+            graph.get(edge[1]).add(edge[0]);
+        }
         int[] vis = new int[n + 1];
         System.out.println("DFS");
         dfs(1, graph, vis);
-        Arrays.fill(vis, 0);
+    }
+
+    public static void test_bfs() {
+        int n = 6;
+        List<List<Integer>> graph = new ArrayList<>();
+        for (int i = 0; i <= n; i++) {
+            graph.add(new ArrayList<>());
+        }
+        int[][] edges = { { 1, 2 }, { 1, 3 }, { 3, 4 }, { 4, 5 }, { 2, 6 }, { 2, 4 } };
+        for (int[] edge : edges) {
+            graph.get(edge[0]).add(edge[1]);
+            graph.get(edge[1]).add(edge[0]);
+        }
         System.out.println("BFS");
         bfs(graph, n);
     }
+
+    public static void test_dijkstra() {
+        int n = 4;
+        List<List<Node>> graph = new ArrayList<>();
+        for (int i = 0; i <= n; i++) {
+            graph.add(new ArrayList<>());
+        }
+        int[][] edges = { { 0, 1, 9 }, { 0, 2, 1 }, { 0, 3, 1 }, { 1, 3, 3 }, { 2, 3, 2 } };
+        for (int[] edge : edges) {
+            graph.get(edge[0]).add(new Node(edge[0], edge[1], edge[2]));
+            graph.get(edge[1]).add(new Node(edge[1], edge[0], edge[2]));
+        }
+        int[] dist = dijkstra(graph, n, 0);
+        System.out.println("Dijkstra");
+        for (int e : dist) {
+            System.out.print(e + " ");
+        }
+        System.out.println();
+    }
+
+    public static void test_floydWarshall() {
+
+    }
+
 }

@@ -31,7 +31,7 @@ public class D implements Runnable {
 	}
 
 	public static void main(String[] args) throws IOException {
-		new Thread(null, new D(), "akashsardar383@gmail.com", 1 << 30).start();
+		new Thread(null, new D(), "__AkashSardar__", 1 << 30).start();
 	}
 
 	private static FastReader fr = new FastReader();

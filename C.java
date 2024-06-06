@@ -31,7 +31,7 @@ public class C implements Runnable {
 	}
 
 	public static void main(String[] args) throws IOException {
-		new Thread(null, new C(), "__AkashSardar__", 1 << 30).start();
+		new Thread(null, new C(), "Mission_Expert", 1 << 30).start();
 	}
 
 	private static FastReader fr = new FastReader();
@@ -119,6 +119,12 @@ public class C implements Runnable {
 
 	public static void debug(long[] arr) {
 		for (long e : arr)
+			print(e + " ");
+		print("\n");
+	}
+
+	public static void debug(boolean[] arr) {
+		for (boolean e : arr)
 			print(e + " ");
 		print("\n");
 	}

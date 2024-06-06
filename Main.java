@@ -13,25 +13,7 @@ public class Main implements Runnable {
     public static long MOD = 1000000007;
 
     public static void main() throws IOException {
-        int n = fr.readInteger();
-        int[] a = fr.readArray(n);
-        List<Integer> list = new ArrayList<>();
-        for (int e : a)
-            list.add(e);
-        List<Integer> ans = new ArrayList<>();
-        while (list.size() > 0) {
-            Collections.sort(list);
-            int maxi = list.get(list.size() - 1);
-            while (list.size() > 0 && list.get(list.size() - 1) == maxi) {
-                ans.add(list.get(list.size() - 1));
-                list.remove(list.size() - 1);
-            }
-            for (int i = 0; i < list.size(); i++)
-                list.set(i, list.get(i) & maxi);
-        }
-        for (int e : ans)
-            print(e + " ");
-        print("\n");
+
     }
 
     @Override
@@ -49,7 +31,7 @@ public class Main implements Runnable {
     }
 
     public static void main(String[] args) throws IOException {
-        new Thread(null, new Main(), "__AkashSardar__", 1 << 30).start();
+        new Thread(null, new Main(), "Mission_5-stars", 1 << 30).start();
     }
 
     private static FastReader fr = new FastReader();
@@ -137,6 +119,12 @@ public class Main implements Runnable {
 
     public static void debug(long[] arr) {
         for (long e : arr)
+            print(e + " ");
+        print("\n");
+    }
+
+    public static void debug(boolean[] arr) {
+        for (boolean e : arr)
             print(e + " ");
         print("\n");
     }

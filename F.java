@@ -12,7 +12,7 @@ public class F implements Runnable {
 
 	public static long MOD = 1000000007;
 
-	public static void main() throws IOException {
+	public static void akash() throws IOException {
 
 	}
 
@@ -22,7 +22,7 @@ public class F implements Runnable {
 			boolean hasTestCases = true;
 			int tc = hasTestCases ? fr.readInteger() : 1;
 			for (int tt = 1; tt <= tc; tt++) {
-				main();
+				akash();
 				flush();
 			}
 		} catch (Exception e) {

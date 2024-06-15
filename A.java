@@ -8,11 +8,16 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
+/***
+ * Practice like you've never won.
+ * Perform like you've never lost.
+ ***/
+
 public class A implements Runnable {
 
 	public static long MOD = 1000000007;
 
-	public static void akash() throws IOException {
+	public static void __AKASH() throws IOException {
 
 	}
 
@@ -22,7 +27,7 @@ public class A implements Runnable {
 			boolean hasTestCases = true;
 			int tc = hasTestCases ? fr.readInteger() : 1;
 			for (int tt = 1; tt <= tc; tt++) {
-				akash();
+				__AKASH();
 				flush();
 			}
 		} catch (Exception e) {
@@ -132,6 +137,10 @@ public class A implements Runnable {
 	public static void flush() {
 		pw.flush();
 	}
+
+	public static int dir[][] = new int[][] { { 1, 0 }, { -1, 0 }, { 0, 1 }, { 0, -1 } };
+	public static int dir8[][] = new int[][] { { 1, 0 }, { -1, 0 }, { 0, 1 }, { 0, -1 },
+			{ 1, -1 }, { -1, -1 }, { -1, 1 }, { 1, 1 } };
 
 	public static void sort(int[] arr) {
 		List<Integer> list = new ArrayList<>();

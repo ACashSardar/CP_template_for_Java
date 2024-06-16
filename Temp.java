@@ -13,7 +13,7 @@ import java.util.Map;
  * Perform like you've never lost.
  ***/
 
-public class G implements Runnable {
+public class Temp implements Runnable {
 
     public static long MOD = 1000000007;
 
@@ -36,8 +36,10 @@ public class G implements Runnable {
     }
 
     public static void main(String[] args) throws IOException {
-        new Thread(null, new G(), "Mission_Expert", 1 << 30).start();
+        new Thread(null, new Temp(), "Mission_5stars", 1 << 30).start();
     }
+
+    /*** Java I/O related ***/
 
     private static FastReader fr = new FastReader();
     private static PrintWriter pw = new PrintWriter(System.out);
@@ -137,6 +139,8 @@ public class G implements Runnable {
     public static void flush() {
         pw.flush();
     }
+
+    /*** Utility Methods ***/
 
     public static int dir[][] = new int[][] { { 1, 0 }, { -1, 0 }, { 0, 1 }, { 0, -1 } };
     public static int dir8[][] = new int[][] { { 1, 0 }, { -1, 0 }, { 0, 1 }, { 0, -1 },
@@ -245,4 +249,5 @@ public class G implements Runnable {
         }
         return lo - 1;
     }
+
 }

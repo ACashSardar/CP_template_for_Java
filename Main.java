@@ -11,6 +11,9 @@ import java.util.Map;
 /***
  * Practice like you've never won.
  * Perform like you've never lost.
+ * 
+ * Coder: Akash Sardar
+ * Language: Java 21
  ***/
 
 public class Main implements Runnable {

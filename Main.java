@@ -23,8 +23,6 @@ public class Main implements Runnable {
     public static long MOD = 1000000007;
 
     public static void Akash(int _t) throws IOException {
-        int n = fr.readInteger();
-        int[] a = fr.readArray(n);
 
     }
 

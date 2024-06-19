@@ -9,18 +9,22 @@ import java.util.List;
 import java.util.Map;
 
 /***
+ * -------------------------------
  * Practice like you've never won.
  * Perform like you've never lost.
- * 
+ * -------------------------------
  * Coder: Akash Sardar
- * Language: Java 21
+ * Language: Java-21 64-bit
+ * -------------------------------
  ***/
 
 public class Main implements Runnable {
 
     public static long MOD = 1000000007;
 
-    public static void akashsardar() throws IOException {
+    public static void Akash(int _t) throws IOException {
+        int n = fr.readInteger();
+        int[] a = fr.readArray(n);
 
     }
 
@@ -29,8 +33,8 @@ public class Main implements Runnable {
         try {
             boolean hasTestCases = true;
             int tc = hasTestCases ? fr.readInteger() : 1;
-            for (int tt = 1; tt <= tc; tt++) {
-                akashsardar();
+            for (int t = 1; t <= tc; t++) {
+                Akash(t);
                 flush();
             }
         } catch (Exception e) {
@@ -39,7 +43,7 @@ public class Main implements Runnable {
     }
 
     public static void main(String[] args) throws IOException {
-        new Thread(null, new Main(), "Mission_5stars", 1 << 30).start();
+        new Thread(null, new Main(), "Thread-1", 1 << 30).start();
     }
 
     /*** Java I/O related ***/

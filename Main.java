@@ -9,20 +9,18 @@ import java.util.List;
 import java.util.Map;
 
 /***
- * -------------------------------
- * Practice like you've never won.
- * Perform like you've never lost.
- * -------------------------------
- * Coder: Akash Sardar
- * Language: Java-21 64-bit
- * -------------------------------
+ * ----------------------------------------------------------------
+ * Practice like you've never won, perform like you've never lost.
+ * ----------------------------------------------------------------
+ * Coder: Akash Sardar, Language: Java-21 64-bit
+ * ----------------------------------------------------------------
  ***/
 
 public class Main implements Runnable {
 
     public static long MOD = 1000000007;
 
-    public static void Akash(int _t) throws IOException {
+    public static void Akash() throws IOException {
 
     }
 
@@ -32,7 +30,7 @@ public class Main implements Runnable {
             boolean hasTestCases = true;
             int tc = hasTestCases ? fr.readInteger() : 1;
             for (int t = 1; t <= tc; t++) {
-                Akash(t);
+                Akash();
                 flush();
             }
         } catch (Exception e) {

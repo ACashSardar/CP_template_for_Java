@@ -79,11 +79,11 @@ public class Maths {
         isPrime = new boolean[size + 1];
         Arrays.fill(isPrime, true);
         isPrime[0] = isPrime[1] = false;
-        for (int i = 2; i <= size; i++) {
-            if (!isPrime[i])
+        for (long i = 2; i * i <= size; i++) {
+            if (!isPrime[(int) i])
                 continue;
-            for (int j = 2 * i; j <= size; j += i) {
-                isPrime[j] = false;
+            for (long j = i * i; j <= size; j += i) {
+                isPrime[(int) j] = false;
             }
         }
     }

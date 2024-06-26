@@ -1,7 +1,0 @@
-java.lang.NumberFormatException: Cannot parse null string
-	at java.base/java.lang.Integer.parseInt(Integer.java:630)
-	at java.base/java.lang.Integer.parseInt(Integer.java:784)
-	at Main$FastReader.readInteger(Main.java:90)
-	at Main.Akash(Main.java:24)
-	at Main.run(Main.java:64)
-	at java.base/java.lang.Thread.run(Thread.java:833)

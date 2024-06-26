@@ -1,1 +1,3 @@
-https://codeforces.com/problemset/problem/1516/C
+https://codeforces.com/contest/1982/problem/D
+https://codeforces.com/contest/1986/problem/F
+https://www.codechef.com/problems/BREAKSTRING

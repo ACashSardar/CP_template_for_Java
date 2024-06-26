@@ -9,20 +9,18 @@ import java.util.List;
 import java.util.Map;
 
 /***
- * -------------------------------
- * Practice like you've never won.
- * Perform like you've never lost.
- * -------------------------------
- * Coder: Akash Sardar
- * Language: Java-21 64-bit
- * -------------------------------
+ * ----------------------------------------------------------------
+ * Practice like you've never won, perform like you've never lost.
+ * ----------------------------------------------------------------
+ * Coder: Akash Sardar, Language: Java-21 64-bit
+ * ----------------------------------------------------------------
  ***/
 
-public class Temp implements Runnable {
+public class Clean implements Runnable {
 
     public static long MOD = 1000000007;
 
-    public static void akashsardar() throws IOException {
+    public static void Akash() throws IOException {
 
     }
 
@@ -31,8 +29,8 @@ public class Temp implements Runnable {
         try {
             boolean hasTestCases = true;
             int tc = hasTestCases ? fr.readInteger() : 1;
-            for (int tt = 1; tt <= tc; tt++) {
-                akashsardar();
+            for (int t = 1; t <= tc; t++) {
+                Akash();
                 flush();
             }
         } catch (Exception e) {
@@ -41,7 +39,7 @@ public class Temp implements Runnable {
     }
 
     public static void main(String[] args) throws IOException {
-        new Thread(null, new Temp(), "Mission_5stars", 1 << 30).start();
+        new Thread(null, new Main(), "Thread-1", 1 << 30).start();
     }
 
     /*** Java I/O related ***/
@@ -139,6 +137,14 @@ public class Temp implements Runnable {
         for (boolean e : arr)
             print(e + " ");
         print("\n");
+    }
+
+    public static void YES() {
+        print("YES\n");
+    }
+
+    public static void NO() {
+        print("NO\n");
     }
 
     public static void flush() {

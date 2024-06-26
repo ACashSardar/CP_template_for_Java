@@ -1,7 +1,9 @@
 package templates;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -74,6 +76,7 @@ public class Maths {
     /*** PRIME NUMBERS & SIEVE ***/
 
     public static boolean[] isPrime;
+    public static List<Long> primes;
 
     public static void sieve(int size) {
         isPrime = new boolean[size + 1];
@@ -85,6 +88,11 @@ public class Maths {
             for (long j = i * i; j <= size; j += i) {
                 isPrime[(int) j] = false;
             }
+        }
+        primes = new ArrayList<>();
+        for (long i = 2; i <= size; i++) {
+            if (isPrime[(int) i])
+                primes.add(i);
         }
     }
 
@@ -105,7 +113,9 @@ public class Maths {
 
     public static void getPrimeFactors(Map<Long, Integer> primeFatctors, long num) {
         long temp = num;
-        for (long i = 0; i * i <= num; i++) {
+        for (long i : primes) {
+            if (i * i > num)
+                break;
             if (!isPrime[(int) i])
                 continue;
             int cnt = 0;
@@ -115,6 +125,11 @@ public class Maths {
             }
             if (cnt > 0)
                 primeFatctors.put(i, cnt);
+            if (temp == 1)
+                break;
+        }
+        if (temp > 1) {
+            primeFatctors.put(temp, primeFatctors.getOrDefault(temp, 1));
         }
     }
 

@@ -139,6 +139,14 @@ public class Main implements Runnable {
         print("\n");
     }
 
+    public static void YES() {
+        print("YES\n");
+    }
+
+    public static void NO() {
+        print("NO\n");
+    }
+
     public static void flush() {
         pw.flush();
     }

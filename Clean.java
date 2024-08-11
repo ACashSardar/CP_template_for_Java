@@ -254,4 +254,21 @@ public class Clean implements Runnable {
         return lo - 1;
     }
 
+    public static long[] compPrefixSum(long[] a) {
+        int n = a.length;
+        long[] pref = new long[n];
+        pref[0] = a[0];
+        for (int i = 1; i < n; i++)
+            pref[i] = pref[i - 1] + a[i];
+        return pref;
+    }
+
+    public static long[] compSuffixSum(long[] a) {
+        int n = a.length;
+        long[] suff = new long[n];
+        suff[n - 1] = a[n - 1];
+        for (int i = n - 2; i >= 0; i--)
+            suff[i] = suff[i + 1] + a[i];
+        return suff;
+    }
 }

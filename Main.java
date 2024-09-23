@@ -193,7 +193,7 @@ public class Main implements Runnable {
 
     public static long div(long a, long b) {
         a = a % MOD;
-        long inv_b = binExp(b, MOD - 2);
+        long inv_b = binExpItr(b, MOD - 2);
         return mul(a, inv_b);
     }
 

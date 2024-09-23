@@ -8,3 +8,4 @@ https://www.codechef.com/problems/MAXEQUAL
 https://www.codechef.com/problems/SEQSEARCH
 https://codeforces.com/contest/2005/problem/C
 https://codeforces.com/problemset/problem/1987/D
+https://codeforces.com/contest/2013/problem/D

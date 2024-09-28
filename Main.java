@@ -1,13 +1,7 @@
+/*  << Coder: Akash Sardar, Language:Java-21, 64-Bit >>  */
+
 import java.io.*;
 import java.util.*;
-
-/***
- * ----------------------------------------------------------------
- * Practice like you've never won, perform like you've never lost.
- * ----------------------------------------------------------------
- * Coder: Akash Sardar, Language: Java-21 64-bit
- * ----------------------------------------------------------------
- ***/
 
 public class Main implements Runnable {
 
@@ -25,6 +19,7 @@ public class Main implements Runnable {
             for (int t = 1; t <= tc; t++) {
                 Akash();
                 flush();
+
             }
         } catch (Exception e) {
             e.printStackTrace();

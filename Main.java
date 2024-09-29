@@ -7,7 +7,7 @@ public class Main implements Runnable {
 
     public static long MOD = 1000000007;
 
-    public static void Akash() throws IOException {
+    public static void Akash(int tc) throws IOException {
 
     }
 
@@ -17,9 +17,8 @@ public class Main implements Runnable {
             boolean hasTestCases = true;
             int tc = hasTestCases ? fr.readInteger() : 1;
             for (int t = 1; t <= tc; t++) {
-                Akash();
+                Akash(t);
                 flush();
-
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -89,14 +88,6 @@ public class Main implements Runnable {
         public String[] readStringArray() throws IOException {
             return this.br.readLine().split(" ");
         }
-
-        public List<Integer> readList() throws IOException {
-            String[] strArr = this.br.readLine().split(" ");
-            List<Integer> list = new ArrayList<>();
-            for (int i = 0; i < strArr.length; i++)
-                list.add(Integer.parseInt(strArr[i]));
-            return list;
-        }
     }
 
     public static void print(String s) {
@@ -104,9 +95,7 @@ public class Main implements Runnable {
     }
 
     public static <K, V> void debug(Map<K, V> map) {
-        for (var itr : map.entrySet())
-            print(itr.getKey() + " : " + itr.getValue() + "\n");
-        print("\n");
+        map.forEach((key, val) -> print(key + " : " + val + "\n"));
     }
 
     public static void debug(int[] arr) {
@@ -236,16 +225,12 @@ public class Main implements Runnable {
         return a % b == 0 ? a / b : (1 + a / b);
     }
 
-    public static long sqrtFloor(long a) {
-        long lo = 0;
-        long hi = 1000000000L;
-        while (lo <= hi) {
-            long mid = lo + (hi - lo) / 2;
-            if (mid * mid <= a)
-                lo = mid + 1;
-            else
-                hi = mid - 1;
+    public static int popcount(long n) {
+        int cnt = 0;
+        while (n > 0) {
+            n ^= (-n & n);
+            cnt++;
         }
-        return lo - 1;
+        return cnt;
     }
 }

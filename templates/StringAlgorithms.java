@@ -9,20 +9,29 @@ public class StringAlgorithms {
 
     public static long MOD = 1000000007;
 
-    // DOUBLE HASHING (Safe)
-    public static long[] computeDoubleHash(String s, int n, long BASE1, long BASE2) {
+    public static long[][] expCache;
+
+    // FAST DOUBLE HASHING WITH EXPONENT CACHING (Safe)
+    public static long[] computeDoubleHash(String s, int n, int BASE1, int BASE2) {
         long hash1 = 0, hash2 = 0;
         for (int i = n - 1; i >= 0; i--) {
-            hash1 = add(hash1, mul(s.charAt(i), binExpItr(BASE1, n - 1 - i)));
-            hash2 = add(hash2, mul(s.charAt(i), binExpItr(BASE2, n - 1 - i)));
+            hash1 = add(hash1, mul(s.charAt(i), expCache[BASE1][n - 1 - i]));
+            hash2 = add(hash2, mul(s.charAt(i), expCache[BASE2][n - 1 - i]));
         }
         return new long[] { hash1, hash2 };
     }
 
     public static int rabinKarpDoubleHash(String txt, String pat) {
         int n = txt.length(), m = pat.length();
-        long BASE1 = 26, BASE2 = 27;
-        long MAX_WT1 = binExpItr(BASE1, m), MAX_WT2 = binExpItr(BASE2, m);
+        expCache = new long[100][m + 1];
+        int BASE1 = 26, BASE2 = 27;
+        long MAX_WT1 = 1, MAX_WT2 = 1;
+        for (int i = 0; i < m; i++) {
+            expCache[BASE1][i] = MAX_WT1;
+            expCache[BASE2][i] = MAX_WT2;
+            MAX_WT1 = mul(MAX_WT1, BASE1);
+            MAX_WT2 = mul(MAX_WT2, BASE2);
+        }
         long[] patHash = computeDoubleHash(pat, m, BASE1, BASE2);
         long[] windowHash = null;
         for (int i = 0; i + m - 1 < n; i++) {

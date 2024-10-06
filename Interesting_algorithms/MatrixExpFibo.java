@@ -1,14 +1,62 @@
+package Interesting_algorithms;
 /*  << Coder: Akash Sardar, Language:Java-21, 64-Bit >>  */
 
 import java.io.*;
 import java.util.*;
 
-public class Clean implements Runnable {
+public class MatrixExpFibo implements Runnable {
 
     public static long MOD = 1000000007;
 
-    public static void Akash() throws IOException {
+    static class Matrix {
+        long a11, a12;
+        long a21, a22;
 
+        Matrix() {
+
+        }
+
+        Matrix(int a11, int a12, int a21, int a22) {
+            this.a11 = a11;
+            this.a12 = a12;
+            this.a21 = a21;
+            this.a22 = a22;
+        }
+
+        void debug() {
+            print(this.a11 + " " + this.a12 + "\n");
+            print(this.a21 + " " + this.a22 + "\n\n");
+        }
+    }
+
+    public static Matrix multiply(Matrix m1, Matrix m2) {
+        Matrix res = new Matrix();
+        res.a11 = m1.a11 * m2.a11 + m1.a12 * m2.a21;
+        res.a12 = m1.a11 * m2.a12 + m1.a12 * m2.a22;
+        res.a21 = m1.a21 * m2.a11 + m1.a22 * m2.a21;
+        res.a22 = m1.a21 * m2.a12 + m1.a22 * m2.a22;
+        return res;
+    }
+
+    public static Matrix matrixExp(Matrix mat, int n) {
+        if (n == 1)
+            return mat;
+        Matrix res = multiply(matrixExp(mat, n / 2), matrixExp(mat, n / 2));
+        if (n % 2 == 1)
+            res = multiply(res, mat);
+        return res;
+    }
+
+    public static void Akash() throws IOException {
+        int n = fr.readInteger();
+        long f0 = 0;
+        long f1 = 1;
+        Matrix base = new Matrix(1, 1, 1, 0);
+        Matrix res = matrixExp(base, n - 1);
+        // base.debug();
+        // res.debug();
+        long fn = res.a11 * f1 + res.a12 * f0;
+        print(n + "th Fibonacci Number: " + fn + "\n");
     }
 
     @Override
@@ -26,7 +74,7 @@ public class Clean implements Runnable {
     }
 
     public static void main(String[] args) throws IOException {
-        new Thread(null, new Main(), "Thread-1", 1 << 30).start();
+        new Thread(null, new MatrixExpFibo(), "Thread-1", 1 << 30).start();
     }
 
     /*** Java I/O related ***/
@@ -150,6 +198,17 @@ public class Clean implements Runnable {
         Collections.sort(list);
         for (int i = 0; i < arr.length; i++)
             arr[i] = list.get(i);
+    }
+
+    public static void reverse(long[] arr) {
+        int l = 0, r = arr.length - 1;
+        while (l < r) {
+            arr[l] = arr[l] ^ arr[r];
+            arr[r] = arr[l] ^ arr[r];
+            arr[l] = arr[l] ^ arr[r];
+            l++;
+            r--;
+        }
     }
 
     public static <T> void sort(T[] arr, Comparator<? super T> cmp) {

@@ -8,3 +8,4 @@ https://www.codechef.com/problems/MAXEQUAL
 https://www.codechef.com/problems/SEQSEARCH
 https://codeforces.com/contest/2005/problem/C
 https://leetcode.com/problems/find-the-occurrence-of-first-almost-equal-substring/description/
+https://www.codechef.com/problems/TRICOUNT1

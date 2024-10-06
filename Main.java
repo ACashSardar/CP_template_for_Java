@@ -7,7 +7,7 @@ public class Main implements Runnable {
 
     public static long MOD = 1000000007;
 
-    public static void Akash(int tc) throws IOException {
+    public static void Akash() throws IOException {
 
     }
 
@@ -17,7 +17,7 @@ public class Main implements Runnable {
             boolean hasTestCases = true;
             int tc = hasTestCases ? fr.readInteger() : 1;
             for (int t = 1; t <= tc; t++) {
-                Akash(t);
+                Akash();
                 flush();
             }
         } catch (Exception e) {
@@ -150,6 +150,17 @@ public class Main implements Runnable {
         Collections.sort(list);
         for (int i = 0; i < arr.length; i++)
             arr[i] = list.get(i);
+    }
+
+    public static void reverse(long[] arr) {
+        int l = 0, r = arr.length - 1;
+        while (l < r) {
+            arr[l] = arr[l] ^ arr[r];
+            arr[r] = arr[l] ^ arr[r];
+            arr[l] = arr[l] ^ arr[r];
+            l++;
+            r--;
+        }
     }
 
     public static <T> void sort(T[] arr, Comparator<? super T> cmp) {

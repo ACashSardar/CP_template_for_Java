@@ -2,6 +2,7 @@ package templates;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -17,6 +18,16 @@ public class Graph {
         Node(int u, int v, int wt) {
             this.u = u;
             this.v = v;
+            this.wt = wt;
+        }
+    }
+
+    static class Pair {
+        int node;
+        int wt;
+
+        Pair(int node, int wt) {
+            this.node = node;
             this.wt = wt;
         }
     }
@@ -109,11 +120,7 @@ public class Graph {
             if (vis[v] == 1) {
                 if (v == par)
                     continue;
-                if (low[v] > low[u]) {
-                    set.add(u + "_" + v);
-                } else {
-                    mini = Math.min(mini, low[v]);
-                }
+                mini = Math.min(mini, low[v]);
                 continue;
             }
             bridge(v, u, graph, vis, time + 1, low, set);
@@ -138,6 +145,78 @@ public class Graph {
         String key1 = c + "_" + d;
         String key2 = d + "_" + c;
         return (set.contains(key1) || set.contains(key2)) ? 1 : 0;
+    }
+
+    static int spanningTree(int V, int E, int edges[][]) {
+        List<List<Pair>> adjList = new ArrayList<>();
+        for (int i = 0; i < V; i++)
+            adjList.add(new ArrayList<>());
+        for (int[] edge : edges) {
+            int u = edge[0], v = edge[1], wt = edge[2];
+            adjList.get(u).add(new Pair(v, wt));
+            adjList.get(v).add(new Pair(u, wt));
+        }
+        int ans = 0;
+        int[] vis = new int[V];
+        Queue<Pair> q = new PriorityQueue<>((a, b) -> a.wt - b.wt);
+        q.add(new Pair(0, 0));
+        while (!q.isEmpty()) {
+            Pair curr = q.poll();
+            if (vis[curr.node] == 1) {
+                continue;
+            }
+            vis[curr.node] = 1;
+            ans += curr.wt;
+            for (Pair adj : adjList.get(curr.node)) {
+                if (vis[adj.node] != 1) {
+                    q.add(new Pair(adj.node, adj.wt));
+                }
+            }
+        }
+        return ans;
+    }
+
+    public static int spanningKForest(int V, int E, int edges[][], int k) {
+        List<List<Pair>> adjList = new ArrayList<>();
+
+        // O(V)
+        for (int i = 0; i < V; i++)
+            adjList.add(new ArrayList<>());
+
+        // O(E)
+        for (int[] edge : edges) {
+            int u = edge[0], v = edge[1], wt = edge[2];
+            adjList.get(u).add(new Pair(v, wt));
+            adjList.get(v).add(new Pair(u, wt));
+        }
+        List<Integer> mstEdges = new ArrayList<>();
+        int MST_WT = 0;
+        int[] vis = new int[V];
+        Queue<Pair> q = new PriorityQueue<>((a, b) -> a.wt - b.wt);
+        q.add(new Pair(0, 0));
+
+        // O(V*log V+E*log V)
+        while (!q.isEmpty()) {
+            Pair curr = q.poll();
+            if (vis[curr.node] == 1) {
+                continue;
+            }
+            vis[curr.node] = 1;
+            mstEdges.add(curr.wt);
+            MST_WT += curr.wt;
+            for (Pair adj : adjList.get(curr.node)) {
+                if (vis[adj.node] != 1) {
+                    q.add(new Pair(adj.node, adj.wt));
+                }
+            }
+        }
+
+        // O(V*logV)
+        Collections.sort(mstEdges, Collections.reverseOrder());
+        for (int i = 0; i < k - 1; i++) {
+            MST_WT -= mstEdges.get(i);
+        }
+        return MST_WT;
     }
 
     public static void main(String[] args) {

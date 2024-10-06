@@ -6,6 +6,8 @@ import java.util.*;
 public class Clean implements Runnable {
 
     public static long MOD = 1000000007;
+    public static int[] dir4X = { 1, 0, -1, 0 }, dir4Y = { 0, 1, 0, -1 };
+    public static int[] dir8X = { 1, 0, -1, 0, -1, 1, 1, -1 }, dir8Y = { 0, 1, 0, -1, -1, 1, -1, 1 };
 
     public static void Akash() throws IOException {
 
@@ -14,7 +16,7 @@ public class Clean implements Runnable {
     @Override
     public void run() {
         try {
-            boolean hasTestCases = true;
+            boolean hasTestCases = false;
             int tc = hasTestCases ? fr.readInteger() : 1;
             for (int t = 1; t <= tc; t++) {
                 Akash();
@@ -26,7 +28,7 @@ public class Clean implements Runnable {
     }
 
     public static void main(String[] args) throws IOException {
-        new Thread(null, new Main(), "Thread-1", 1 << 30).start();
+        new Thread(null, new Clean(), "Thread-1", 1 << 30).start();
     }
 
     /*** Java I/O related ***/
@@ -130,9 +132,9 @@ public class Clean implements Runnable {
 
     /*** Utility Methods ***/
 
-    public static int dir[][] = new int[][] { { 1, 0 }, { -1, 0 }, { 0, 1 }, { 0, -1 } };
-    public static int dir8[][] = new int[][] { { 1, 0 }, { -1, 0 }, { 0, 1 }, { 0, -1 },
-            { 1, -1 }, { -1, -1 }, { -1, 1 }, { 1, 1 } };
+    public static boolean isValid(int i, int j, int n, int m) {
+        return i >= 0 && i < n && j >= 0 && j < m;
+    }
 
     public static void sort(int[] arr) {
         List<Integer> list = new ArrayList<>();
@@ -150,6 +152,17 @@ public class Clean implements Runnable {
         Collections.sort(list);
         for (int i = 0; i < arr.length; i++)
             arr[i] = list.get(i);
+    }
+
+    public static void reverse(long[] arr) {
+        int l = 0, r = arr.length - 1;
+        while (l < r) {
+            arr[l] = arr[l] ^ arr[r];
+            arr[r] = arr[l] ^ arr[r];
+            arr[l] = arr[l] ^ arr[r];
+            l++;
+            r--;
+        }
     }
 
     public static <T> void sort(T[] arr, Comparator<? super T> cmp) {

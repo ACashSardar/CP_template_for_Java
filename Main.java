@@ -6,6 +6,8 @@ import java.util.*;
 public class Main implements Runnable {
 
     public static long MOD = 1000000007;
+    public static int[] dir4V = { 1, 0, -1, 0 }, dir4H = { 0, 1, 0, -1 };
+    public static int[] dir8V = { 1, 0, -1, 0, -1, 1, 1, -1 }, dir8H = { 0, 1, 0, -1, -1, 1, -1, 1 };
 
     public static void Akash() throws IOException {
 
@@ -14,7 +16,7 @@ public class Main implements Runnable {
     @Override
     public void run() {
         try {
-            boolean hasTestCases = true;
+            boolean hasTestCases = false;
             int tc = hasTestCases ? fr.readInteger() : 1;
             for (int t = 1; t <= tc; t++) {
                 Akash();
@@ -130,9 +132,9 @@ public class Main implements Runnable {
 
     /*** Utility Methods ***/
 
-    public static int dir[][] = new int[][] { { 1, 0 }, { -1, 0 }, { 0, 1 }, { 0, -1 } };
-    public static int dir8[][] = new int[][] { { 1, 0 }, { -1, 0 }, { 0, 1 }, { 0, -1 },
-            { 1, -1 }, { -1, -1 }, { -1, 1 }, { 1, 1 } };
+    public static boolean isValid(int i, int j, int n, int m) {
+        return i >= 0 && i < n && j >= 0 && j < m;
+    }
 
     public static void sort(int[] arr) {
         List<Integer> list = new ArrayList<>();

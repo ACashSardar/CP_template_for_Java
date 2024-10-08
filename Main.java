@@ -1,4 +1,4 @@
-/*  << Coder: Akash Sardar, Language:Java-21, 64-Bit >>  */
+/*--------< Coder: AKASH SARDAR, Language:JAVA-21, 64-BIT >-------*/
 
 import java.io.*;
 import java.util.*;
@@ -16,8 +16,8 @@ public class Main implements Runnable {
     @Override
     public void run() {
         try {
-            boolean hasTestCases = false;
-            int tc = hasTestCases ? fr.readInteger() : 1;
+            boolean hasTestCases = true;
+            int tc = hasTestCases ? readInteger() : 1;
             for (int t = 1; t <= tc; t++) {
                 Akash();
                 flush();
@@ -31,66 +31,79 @@ public class Main implements Runnable {
         new Thread(null, new Main(), "Thread-1", 1 << 30).start();
     }
 
-    /*** Java I/O related ***/
+    /*** ---------------------JAVA I/O RELATED--------------------- ***/
 
-    private static FastReader fr = new FastReader();
+    private static FastReader fr = new FastReader(System.in);
     private static PrintWriter pw = new PrintWriter(System.out);
 
+    /*** --------------------FOR READING INPUTS-------------------- ***/
+
     static class FastReader {
+        public BufferedReader reader;
+        public StringTokenizer tokenizer;
 
-        private BufferedReader br;
-
-        public FastReader() {
-            this.br = new BufferedReader(new InputStreamReader(System.in));
+        public FastReader(InputStream stream) {
+            reader = new BufferedReader(new InputStreamReader(stream));
+            tokenizer = null;
         }
 
-        public int readInteger() throws NumberFormatException, IOException {
-            return Integer.parseInt(this.br.readLine());
-        }
-
-        public long readLong() throws NumberFormatException, IOException {
-            return Long.parseLong(this.br.readLine());
-        }
-
-        public double readDouble() throws NumberFormatException, IOException {
-            return Double.parseDouble(this.br.readLine());
-        }
-
-        public char readCharacter() throws IOException {
-            String s = this.br.readLine();
-            if (s.length() > 1)
-                throw new IOException("Invalid Character");
-            return s.charAt(0);
-        }
-
-        public String readString() throws IOException {
-            return this.br.readLine();
-        }
-
-        public int[] readArray(int n) throws IOException {
-            String[] strArr = this.br.readLine().split(" ");
-            if (strArr.length != n)
-                throw new IOException("Invalid array size");
-            int[] arr = new int[n];
-            for (int i = 0; i < n; i++)
-                arr[i] = Integer.parseInt(strArr[i]);
-            return arr;
-        }
-
-        public long[] readLongArray(int n) throws IOException {
-            String[] strArr = this.br.readLine().split(" ");
-            if (strArr.length != n)
-                throw new IOException("Invalid array size");
-            long[] arr = new long[n];
-            for (int i = 0; i < n; i++)
-                arr[i] = Long.parseLong(strArr[i]);
-            return arr;
-        }
-
-        public String[] readStringArray() throws IOException {
-            return this.br.readLine().split(" ");
+        public String next() {
+            while (tokenizer == null || !tokenizer.hasMoreTokens()) {
+                try {
+                    tokenizer = new StringTokenizer(reader.readLine());
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            return tokenizer.nextToken();
         }
     }
+
+    public static int readInteger() {
+        return Integer.parseInt(fr.next());
+    }
+
+    public static long readLong() {
+        return Long.parseLong(fr.next());
+    }
+
+    public static double readDouble() {
+        return Double.parseDouble(fr.next());
+    }
+
+    public static String readString() {
+        return fr.next();
+    }
+
+    public static int[] readArray(int n) throws IOException {
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++)
+            arr[i] = readInteger();
+        return arr;
+    }
+
+    public static long[] readLongArray(int n) throws IOException {
+        long[] arr = new long[n];
+        for (int i = 0; i < n; i++)
+            arr[i] = readLong();
+        return arr;
+    }
+
+    public static double[] readDoubleArray(int n) throws IOException {
+        double[] arr = new double[n];
+        for (int i = 0; i < n; i++)
+            arr[i] = readDouble();
+        return arr;
+    }
+
+    public static String[] readStringArray(int n) throws IOException {
+        String[] arr = new String[n];
+        for (int i = 0; i < n; i++)
+            arr[i] = readString();
+        return arr;
+    }
+
+    /*** -------------------FOR PRINTING RESULTS------------------- ***/
 
     public static void print(String s) {
         pw.print(s);
@@ -130,7 +143,7 @@ public class Main implements Runnable {
         pw.flush();
     }
 
-    /*** Utility Methods ***/
+    /*** ---------------------UTILITY FUNCTIONS--------------------- ***/
 
     public static boolean isValid(int i, int j, int n, int m) {
         return i >= 0 && i < n && j >= 0 && j < m;

@@ -147,7 +147,7 @@ public class Maths {
     public static long[] fact;
 
     public static void fillFact() {
-        int LIMIT = 200001;
+        int LIMIT = 2000001;
         fact = new long[LIMIT];
         fact[0] = 1;
         fact[1] = 1;

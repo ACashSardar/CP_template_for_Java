@@ -1,46 +1,51 @@
-/*--------- Coder: AKASH SARDAR, Language:JAVA-21, 64-BIT --------*/
+/*------------Coder: AKASH SARDAR, Language: JAVA-21,64-BIT-----------*/
 
 import java.io.*;
 import java.util.*;
 
 public class Main implements Runnable {
 
-    public static long MOD = 1000000007;
+    public static boolean MULTIPLE_TEST_CASES = true;
+
+    /*** ----------------------MY CONSTANTS------------------------ ***/
+    public static long[] fact;
+    public static long MOD = 1000000007, MOD2 = 1000000009;
     public static int[] dir4V = { 1, 0, -1, 0 }, dir4H = { 0, 1, 0, -1 };
     public static int[] dir8V = { 1, 0, -1, 0, -1, 1, 1, -1 }, dir8H = { 0, 1, 0, -1, -1, 1, -1, 1 };
 
+    /*** ---------------------WRITE CODE HERE---------------------- ***/
     public static void Akash() throws IOException {
 
+    }
+
+    /*** ------------------DON'T CHANGE ANYTHING------------------- ***/
+    public static void main(String[] args) throws IOException {
+        new Thread(null, new Main(), "Thread-1", 1 << 30).start();
     }
 
     @Override
     public void run() {
         try {
-            boolean hasTestCases = true;
-            int tc = hasTestCases ? readInteger() : 1;
+            int tc = MULTIPLE_TEST_CASES ? readInteger() : 1;
             for (int t = 1; t <= tc; t++) {
                 Akash();
                 flush();
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception exception) {
+            exception.printStackTrace();
         }
     }
 
-    public static void main(String[] args) throws IOException {
-        new Thread(null, new Main(), "Thread-1", 1 << 30).start();
-    }
+    /*** ----------------------JAVA FAST I/O----------------------- ***/
 
-    /*** ---------------------JAVA I/O RELATED--------------------- ***/
-
-    private static FastReader fr = new FastReader(System.in);
-    private static PrintWriter pw = new PrintWriter(System.out);
+    public static FastReader fastReader = new FastReader(System.in);
+    public static PrintWriter fastWriter = new PrintWriter(System.out);
 
     /*** --------------------FOR READING INPUTS-------------------- ***/
 
-    static class FastReader {
-        public BufferedReader reader;
-        public StringTokenizer tokenizer;
+    public static class FastReader {
+        private BufferedReader reader;
+        private StringTokenizer tokenizer;
 
         public FastReader(InputStream stream) {
             reader = new BufferedReader(new InputStreamReader(stream));
@@ -60,19 +65,19 @@ public class Main implements Runnable {
     }
 
     public static int readInteger() {
-        return Integer.parseInt(fr.next());
+        return Integer.parseInt(fastReader.next());
     }
 
     public static long readLong() {
-        return Long.parseLong(fr.next());
+        return Long.parseLong(fastReader.next());
     }
 
     public static double readDouble() {
-        return Double.parseDouble(fr.next());
+        return Double.parseDouble(fastReader.next());
     }
 
     public static String readString() {
-        return fr.next();
+        return fastReader.next();
     }
 
     public static int[] readArray(int n) throws IOException {
@@ -106,7 +111,7 @@ public class Main implements Runnable {
     /*** -------------------FOR PRINTING RESULTS------------------- ***/
 
     public static void print(String s) {
-        pw.print(s);
+        fastWriter.print(s);
     }
 
     public static <K, V> void debug(Map<K, V> map) {
@@ -140,7 +145,7 @@ public class Main implements Runnable {
     }
 
     public static void flush() {
-        pw.flush();
+        fastWriter.flush();
     }
 
     /*** ---------------------UTILITY FUNCTIONS--------------------- ***/
@@ -227,6 +232,20 @@ public class Main implements Runnable {
             a = mul(a, a);
         }
         return ans;
+    }
+
+    public static void fillFact() {
+        int LIMIT = 2000001;
+        fact = new long[LIMIT];
+        fact[0] = 1;
+        fact[1] = 1;
+        for (int i = 2; i < LIMIT; i++) {
+            fact[i] = mul(fact[i - 1], i);
+        }
+    }
+
+    public static long nCr(int n, int r) {
+        return div(fact[n], mul(fact[n - r], fact[r]));
     }
 
     public static long gcd(long a, long b) {

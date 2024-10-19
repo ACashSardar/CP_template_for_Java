@@ -6,6 +6,5 @@ https://codeforces.com/problemset/problem/1994/C
 https://codeforces.com/problemset/problem/1997/D
 https://www.codechef.com/problems/MAXEQUAL
 https://www.codechef.com/problems/SEQSEARCH
-https://codeforces.com/contest/2005/problem/C
-https://leetcode.com/problems/find-the-occurrence-of-first-almost-equal-substring/description/
-https://codeforces.com/problemset/problem/1702/E
+https://codeforces.com/problemset/problem/1610/C
+https://codeforces.com/contest/2025/problem/D

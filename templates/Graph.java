@@ -64,6 +64,32 @@ public class Graph {
         }
     }
 
+    public static boolean hasCycle(int u, int par, List<List<Integer>> G, int[] vis) {
+        vis[u] = 1;
+        for (int v : G.get(u)) {
+            if (vis[v] == 1 && par != v) {
+                return true;
+            }
+            if (vis[v] == 0 && hasCycle(v, u, G, vis)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static int cycleLen(int u, int par, List<List<Integer>> G, int[] vis) {
+        vis[u] = 1;
+        int ans = 1;
+        for (int v : G.get(u)) {
+            if (vis[v] == 1)
+                continue;
+            ans = 1 + cycleLen(v, u, G, vis);
+        }
+        if (G.get(u).size() == 0)
+            return 0;
+        return ans;
+    }
+
     public static int[] dijkstra(List<List<Node>> graph, int n, int src) {
         Queue<Node> q = new PriorityQueue<>((a, b) -> a.wt - b.wt);
         int[] dist = new int[n + 1];

@@ -136,6 +136,12 @@ public class Main implements Runnable {
         print("\n");
     }
 
+    public static void debug(char[] arr) {
+        for (char e : arr)
+            print(e + " ");
+        print("\n");
+    }
+
     public static void YES() {
         print("YES\n");
     }

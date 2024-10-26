@@ -9,30 +9,33 @@ public class Main implements Runnable {
 
     /*** ----------------------MY CONSTANTS------------------------ ***/
     public static long[] fact;
-    public static long MOD = 1000000007, MOD2 = 1000000009;
+    public static boolean[] isPrime;
+    public static List<Long> primes;
+    public static long MOD = 1000000007, INF = Long.MAX_VALUE >> 1;
     public static int[] dir4V = { 1, 0, -1, 0 }, dir4H = { 0, 1, 0, -1 };
     public static int[] dir8V = { 1, 0, -1, 0, -1, 1, 1, -1 }, dir8H = { 0, 1, 0, -1, -1, 1, -1, 1 };
 
-    /*** ---------------------WRITE CODE HERE---------------------- ***/
-    public static void Akash() throws IOException {
+    public static void FastJavaCode(int CURRENT_TEST_CASE) throws IOException {
 
     }
 
     /*** ------------------DON'T CHANGE ANYTHING------------------- ***/
     public static void main(String[] args) throws IOException {
-        new Thread(null, new Main(), "Thread-1", 1 << 30).start();
+        new Thread(null, new Main(), "Akash_Sardar_13-12-2000", 1 << 30).start();
     }
 
     @Override
     public void run() {
+        /*** --------------SLOT FOR PRECOMPUTATION----------------- ***/
+
         try {
-            int tc = MULTIPLE_TEST_CASES ? readInteger() : 1;
-            for (int t = 1; t <= tc; t++) {
-                Akash();
+            int Coffee = MULTIPLE_TEST_CASES ? readInteger() : 1, Tea = 0;
+            while (Coffee-- > 0) {
+                FastJavaCode(Tea++);
                 flush();
             }
-        } catch (Exception exception) {
-            exception.printStackTrace();
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
     }
 
@@ -44,23 +47,23 @@ public class Main implements Runnable {
     /*** --------------------FOR READING INPUTS-------------------- ***/
 
     public static class FastReader {
-        private BufferedReader reader;
-        private StringTokenizer tokenizer;
+        private BufferedReader br;
+        private StringTokenizer tk;
 
         public FastReader(InputStream stream) {
-            reader = new BufferedReader(new InputStreamReader(stream));
-            tokenizer = null;
+            br = new BufferedReader(new InputStreamReader(stream));
+            tk = null;
         }
 
         public String next() {
-            while (tokenizer == null || !tokenizer.hasMoreTokens()) {
+            while (tk == null || !tk.hasMoreTokens()) {
                 try {
-                    tokenizer = new StringTokenizer(reader.readLine());
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
+                    tk = new StringTokenizer(br.readLine());
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
                 }
             }
-            return tokenizer.nextToken();
+            return tk.nextToken();
         }
     }
 
@@ -274,6 +277,24 @@ public class Main implements Runnable {
 
     public static long ceil(long a, long b) {
         return a % b == 0 ? a / b : (1 + a / b);
+    }
+
+    public static void sieve(int size) {
+        isPrime = new boolean[size + 1];
+        Arrays.fill(isPrime, true);
+        isPrime[0] = isPrime[1] = false;
+        for (int i = 2; i * i <= size; i++) {
+            if (!isPrime[i])
+                continue;
+            for (int j = i * i; j <= size; j += i) {
+                isPrime[j] = false;
+            }
+        }
+        primes = new ArrayList<>();
+        for (int i = 2; i <= size; i++) {
+            if (isPrime[i])
+                primes.add((long) i);
+        }
     }
 
     public static int popcount(long n) {

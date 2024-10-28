@@ -76,7 +76,7 @@ public class Maths {
     /*** PRIME NUMBERS & SIEVE ***/
 
     public static boolean[] isPrime;
-    public static List<Long> primes;
+    public static List<Long> listOfPrimes;
 
     public static void sieve(int size) {
         isPrime = new boolean[size + 1];
@@ -89,10 +89,10 @@ public class Maths {
                 isPrime[(int) j] = false;
             }
         }
-        primes = new ArrayList<>();
+        listOfPrimes = new ArrayList<>();
         for (long i = 2; i <= size; i++) {
             if (isPrime[(int) i])
-                primes.add(i);
+                listOfPrimes.add(i);
         }
     }
 
@@ -113,7 +113,7 @@ public class Maths {
 
     public static void getPrimeFactors(Map<Long, Integer> primeFatctors, long num) {
         long temp = num;
-        for (long i : primes) {
+        for (long i : listOfPrimes) {
             if (i * i > num)
                 break;
             if (!isPrime[(int) i])

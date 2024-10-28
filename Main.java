@@ -10,33 +10,33 @@ public class Main implements Runnable {
     /*** ----------------------MY CONSTANTS------------------------ ***/
     public static long[] fact;
     public static boolean[] isPrime;
-    public static List<Long> primes;
+    public static List<Long> listOfprimes;
     public static long MOD = 1000000007, INF = Long.MAX_VALUE >> 1;
     public static int[] dir4V = { 1, 0, -1, 0 }, dir4H = { 0, 1, 0, -1 };
     public static int[] dir8V = { 1, 0, -1, 0, -1, 1, 1, -1 }, dir8H = { 0, 1, 0, -1, -1, 1, -1, 1 };
 
-    public static void FastJavaCode(int CURRENT_TEST_CASE) throws IOException {
+    public static void FastJavaCode() throws IOException {
 
+    }
+
+    /*** ---------------PRECOMPUTE INSIDE RUN METHOD--------------- ***/
+    @Override
+    public void run() {
+        try {
+            int Coffee = MULTIPLE_TEST_CASES ? readInteger() : 1, Tea = 0;
+            while (Coffee-- > 0 && Tea < INF) {
+                FastJavaCode();
+                flush();
+                Tea++;
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     /*** ------------------DON'T CHANGE ANYTHING------------------- ***/
     public static void main(String[] args) throws IOException {
         new Thread(null, new Main(), "Akash_Sardar_13-12-2000", 1 << 30).start();
-    }
-
-    @Override
-    public void run() {
-        /*** --------------SLOT FOR PRECOMPUTATION----------------- ***/
-
-        try {
-            int Coffee = MULTIPLE_TEST_CASES ? readInteger() : 1, Tea = 0;
-            while (Coffee-- > 0) {
-                FastJavaCode(Tea++);
-                flush();
-            }
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
     }
 
     /*** ----------------------JAVA FAST I/O----------------------- ***/
@@ -290,10 +290,10 @@ public class Main implements Runnable {
                 isPrime[j] = false;
             }
         }
-        primes = new ArrayList<>();
+        listOfprimes = new ArrayList<>();
         for (int i = 2; i <= size; i++) {
             if (isPrime[i])
-                primes.add((long) i);
+                listOfprimes.add((long) i);
         }
     }
 

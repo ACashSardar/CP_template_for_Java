@@ -1,21 +1,23 @@
 #include <iostream>
-#include <unordered_map>
+#include <map>
 #include <vector>
-
+#include <set>
+#include <cmath>
+#include <cassert>
+#include <algorithm>
+#include <iterator>
+#include <random>
 using namespace std;
 
-void Akash()
-{
-}
+const int mod = 1e9 + 7;
+typedef long long ll;
 
 int main()
 {
-    int tc;
-    cin >> tc;
-    while (tc--)
+    int t;
+    cin >> t;
+    while (t--)
     {
-        Akash();
     }
-
     return 0;
 }

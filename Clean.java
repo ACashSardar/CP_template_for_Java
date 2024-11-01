@@ -7,6 +7,9 @@ public class Clean implements Runnable {
 
     public static boolean MULTIPLE_TEST_CASES = true;
 
+    public static boolean DISPLAY_EXECUTION_TIME = false;
+    public static boolean ONLINE_JUDGE = System.getProperty("ONLINE_JUDGE") != null;
+
     /*** ----------------------MY CONSTANTS------------------------ ***/
     public static long[] fact;
     public static boolean[] isPrime;
@@ -14,6 +17,7 @@ public class Clean implements Runnable {
     public static long MOD = 1000000007, INF = Long.MAX_VALUE >> 1;
     public static int[] dir4V = { 1, 0, -1, 0 }, dir4H = { 0, 1, 0, -1 };
     public static int[] dir8V = { 1, 0, -1, 0, -1, 1, 1, -1 }, dir8H = { 0, 1, 0, -1, -1, 1, -1, 1 };
+    // Calc Freq => map.merge(e, 1, Integer::sum), map.merge(e, 1, Long::sum);
 
     public static void FastJavaCode() throws IOException {
 
@@ -22,21 +26,30 @@ public class Clean implements Runnable {
     /*** ---------------PRECOMPUTE INSIDE RUN METHOD--------------- ***/
     @Override
     public void run() {
+        // Run Sieve(), FillFact() etc.
+
         try {
             int Coffee = MULTIPLE_TEST_CASES ? readInteger() : 1, Tea = 0;
             while (Coffee-- > 0 && Tea < INF) {
+                long start = System.currentTimeMillis();
                 FastJavaCode();
+                long end = System.currentTimeMillis();
+                long diff = end - start;
+                if (!ONLINE_JUDGE && DISPLAY_EXECUTION_TIME && diff >= 0) {
+                    print("Time taken: " + (diff) + " ms.\n");
+                }
                 flush();
                 Tea++;
             }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+
     }
 
     /*** ------------------DON'T CHANGE ANYTHING------------------- ***/
     public static void main(String[] args) throws IOException {
-        new Thread(null, new Main(), "Akash_Sardar_13-12-2000", 1 << 30).start();
+        new Thread(null, new Clean(), "Akash_Sardar_13-12-2000", 1 << 30).start();
     }
 
     /*** ----------------------JAVA FAST I/O----------------------- ***/
@@ -121,27 +134,33 @@ public class Clean implements Runnable {
         map.forEach((key, val) -> print(key + " : " + val + "\n"));
     }
 
-    public static void debug(int[] arr) {
-        for (int e : arr)
+    public static void debug(int... args) {
+        for (int e : args)
             print(e + " ");
         print("\n");
     }
 
-    public static void debug(long[] arr) {
+    public static void debug(long... arr) {
         for (long e : arr)
             print(e + " ");
         print("\n");
     }
 
-    public static void debug(boolean[] arr) {
+    public static void debug(boolean... arr) {
         for (boolean e : arr)
             print(e + " ");
         print("\n");
     }
 
-    public static void debug(char[] arr) {
+    public static void debug(char... arr) {
         for (char e : arr)
             print(e + " ");
+        print("\n");
+    }
+
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+    public static void debug(List list) {
+        list.forEach(e -> print(e + " "));
         print("\n");
     }
 
@@ -181,15 +200,34 @@ public class Clean implements Runnable {
             arr[i] = list.get(i);
     }
 
+    public static void swap(int l, int r, int[] arr) {
+        int temp = arr[l];
+        arr[l] = arr[r];
+        arr[r] = temp;
+    }
+
+    public static void swap(int l, int r, long[] arr) {
+        long temp = arr[l];
+        arr[l] = arr[r];
+        arr[r] = temp;
+    }
+
+    public static <T> void swap(int l, int r, List<T> list) {
+        T temp = list.get(l);
+        list.set(l, list.get(r));
+        list.set(r, temp);
+    }
+
+    public static void reverse(int[] arr) {
+        int l = 0, r = arr.length - 1;
+        while (l < r)
+            swap(l++, r--, arr);
+    }
+
     public static void reverse(long[] arr) {
         int l = 0, r = arr.length - 1;
-        while (l < r) {
-            arr[l] = arr[l] ^ arr[r];
-            arr[r] = arr[l] ^ arr[r];
-            arr[l] = arr[l] ^ arr[r];
-            l++;
-            r--;
-        }
+        while (l < r)
+            swap(l++, r--, arr);
     }
 
     public static <T> void sort(T[] arr, Comparator<? super T> cmp) {
@@ -217,21 +255,11 @@ public class Clean implements Runnable {
 
     public static long div(long a, long b) {
         a = a % MOD;
-        long inv_b = binExpItr(b, MOD - 2);
+        long inv_b = binExp(b, MOD - 2);
         return mul(a, inv_b);
     }
 
     public static long binExp(long a, long b) {
-        if (b == 0)
-            return 1;
-        long half = binExp(a, b / 2);
-        long temp = mul(half, half);
-        if (b % 2 == 0)
-            return temp;
-        return mul(a, temp);
-    }
-
-    public static long binExpItr(long a, long b) {
         long ans = 1;
         for (int i = 0; i < 62; i++) {
             long bit = (b >> i) & 1L;

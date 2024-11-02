@@ -3,21 +3,26 @@
 import java.io.*;
 import java.util.*;
 
+// যা হচ্ছে তা মেনে নিয়ে সামনের দিকে এগিয়ে যেতে হবে।
 public class Main implements Runnable {
 
     public static boolean MULTIPLE_TEST_CASES = true;
-
     public static boolean DISPLAY_EXECUTION_TIME = false;
     public static boolean ONLINE_JUDGE = System.getProperty("ONLINE_JUDGE") != null;
-
-    /*** ----------------------MY CONSTANTS------------------------ ***/
     public static long[] fact;
     public static boolean[] isPrime;
     public static List<Long> listOfprimes;
     public static long MOD = 1000000007, INF = Long.MAX_VALUE >> 1;
     public static int[] dir4V = { 1, 0, -1, 0 }, dir4H = { 0, 1, 0, -1 };
     public static int[] dir8V = { 1, 0, -1, 0, -1, 1, 1, -1 }, dir8H = { 0, 1, 0, -1, -1, 1, -1, 1 };
-    // Calc Freq => map.merge(e, 1, Integer::sum), map.merge(e, 1, Long::sum);
+    /*
+     * ----------------------------------MAP shortcuts------------------------------
+     * One method to rule them all-> map.merge(key, val, (old, new)->old + new);
+     * Calc Freq: map.merge(e, 1, (u, v) -> u + v);
+     * map.getOrDefault(Key, 500) -> If Key isn't present default Value is returned.
+     * map.putIfAbsent(Key, 200) -> Does not update Value if Key is already present.
+     * for (var itr : map.entrySet()) { long K = itr.getKey(), V = itr.getValue(); }
+     */
 
     public static void FastJavaCode() throws IOException {
 
@@ -232,6 +237,10 @@ public class Main implements Runnable {
         int l = 0, r = arr.length - 1;
         while (l < r)
             swap(l++, r--, arr);
+    }
+
+    public static String reverse(String s) {
+        return (new StringBuilder(s)).reverse().toString();
     }
 
     public static <T> void sort(T[] arr, Comparator<? super T> cmp) {

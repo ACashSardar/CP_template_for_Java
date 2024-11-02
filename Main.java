@@ -20,7 +20,7 @@ public class Main implements Runnable {
     // Calc Freq => map.merge(e, 1, Integer::sum), map.merge(e, 1, Long::sum);
 
     public static void FastJavaCode() throws IOException {
-        
+
     }
 
     /*** ---------------PRECOMPUTE INSIDE RUN METHOD--------------- ***/
@@ -162,6 +162,10 @@ public class Main implements Runnable {
     public static void debug(List list) {
         list.forEach(e -> print(e + " "));
         print("\n");
+    }
+
+    public static void debug(Object obj) {
+        print(obj.toString() + "\n");
     }
 
     public static void YES() {

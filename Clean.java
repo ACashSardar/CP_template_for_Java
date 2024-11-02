@@ -49,7 +49,7 @@ public class Clean implements Runnable {
 
     /*** ------------------DON'T CHANGE ANYTHING------------------- ***/
     public static void main(String[] args) throws IOException {
-        new Thread(null, new Clean(), "Akash_Sardar_13-12-2000", 1 << 30).start();
+        new Thread(null, new Main(), "Akash_Sardar_13-12-2000", 1 << 30).start();
     }
 
     /*** ----------------------JAVA FAST I/O----------------------- ***/
@@ -162,6 +162,10 @@ public class Clean implements Runnable {
     public static void debug(List list) {
         list.forEach(e -> print(e + " "));
         print("\n");
+    }
+
+    public static void debug(Object obj) {
+        print(obj.toString() + "\n");
     }
 
     public static void YES() {

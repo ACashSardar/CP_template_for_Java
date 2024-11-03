@@ -1,9 +1,8 @@
-/*------------Coder: AKASH SARDAR, Language: JAVA-21,64-BIT-----------*/
+/* -------------------------------< Coder: AKASH SARDAR, Language: ☕♨️JAVA-21,64-BIT >-------------------------------*/
 
 import java.io.*;
 import java.util.*;
 
-// যা হচ্ছে তা মেনে নিয়ে সামনের দিকে এগিয়ে যেতে হবে।
 public class Main implements Runnable {
 
     public static boolean MULTIPLE_TEST_CASES = true;
@@ -11,12 +10,12 @@ public class Main implements Runnable {
     public static boolean ONLINE_JUDGE = System.getProperty("ONLINE_JUDGE") != null;
     public static long[] fact;
     public static boolean[] isPrime;
-    public static List<Long> listOfprimes;
+    public static List<Long> listOfPrimes;
     public static long MOD = 1000000007, INF = Long.MAX_VALUE >> 1;
     public static int[] dir4V = { 1, 0, -1, 0 }, dir4H = { 0, 1, 0, -1 };
     public static int[] dir8V = { 1, 0, -1, 0, -1, 1, 1, -1 }, dir8H = { 0, 1, 0, -1, -1, 1, -1, 1 };
     /*
-     * ----------------------------------MAP shortcuts------------------------------
+     * ------------------------------- MAP shortcuts -------------------------------
      * One method to rule them all-> map.merge(key, val, (old, new)->old + new);
      * Calc Freq: map.merge(e, 1, (u, v) -> u + v);
      * map.getOrDefault(Key, 500) -> If Key isn't present default Value is returned.
@@ -25,6 +24,8 @@ public class Main implements Runnable {
      */
 
     public static void FastJavaCode() throws IOException {
+        long[] dt = readLongArray(4);
+        long l = dt[0], r = dt[1], i = dt[2], k = dt[3];
 
     }
 
@@ -331,10 +332,10 @@ public class Main implements Runnable {
                 isPrime[j] = false;
             }
         }
-        listOfprimes = new ArrayList<>();
+        listOfPrimes = new ArrayList<>();
         for (int i = 2; i <= size; i++) {
             if (isPrime[i])
-                listOfprimes.add((long) i);
+                listOfPrimes.add((long) i);
         }
     }
 

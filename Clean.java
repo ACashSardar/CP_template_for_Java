@@ -3,7 +3,6 @@
 import java.io.*;
 import java.util.*;
 
-// যা হচ্ছে তা মেনে নিয়ে সামনের দিকে এগিয়ে যেতে হবে।
 public class Clean implements Runnable {
 
     public static boolean MULTIPLE_TEST_CASES = true;
@@ -11,7 +10,7 @@ public class Clean implements Runnable {
     public static boolean ONLINE_JUDGE = System.getProperty("ONLINE_JUDGE") != null;
     public static long[] fact;
     public static boolean[] isPrime;
-    public static List<Long> listOfprimes;
+    public static List<Long> listOfPrimes;
     public static long MOD = 1000000007, INF = Long.MAX_VALUE >> 1;
     public static int[] dir4V = { 1, 0, -1, 0 }, dir4H = { 0, 1, 0, -1 };
     public static int[] dir8V = { 1, 0, -1, 0, -1, 1, 1, -1 }, dir8H = { 0, 1, 0, -1, -1, 1, -1, 1 };
@@ -331,10 +330,10 @@ public class Clean implements Runnable {
                 isPrime[j] = false;
             }
         }
-        listOfprimes = new ArrayList<>();
+        listOfPrimes = new ArrayList<>();
         for (int i = 2; i <= size; i++) {
             if (isPrime[i])
-                listOfprimes.add((long) i);
+                listOfPrimes.add((long) i);
         }
     }
 

@@ -11,4 +11,5 @@ https://codeforces.com/contest/2025/problem/D
 https://codeforces.com/contest/2024/problem/D
 https://codeforces.com/problemset/problem/1778/C
 https://codeforces.com/problemset/problem/2035/D
-https://codeforces.com/contest/1995/problem/C
+https://codeforces.com/contest/1995/problem/D
+https://codeforces.com/contest/2033/problem/F

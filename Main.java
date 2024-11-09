@@ -19,8 +19,8 @@ public class Main implements Runnable {
      * ------------------------------- MAP shortcuts -------------------------------
      * Calc Freq: map.merge(e, 1, (u, v) -> u + v);
      * One method to rule them all-> map.merge(key, val, (old, new)->old + new);
-     * map.getOrDefault(Key, 500) -> If Key isn't present default Value is returned.
-     * map.putIfAbsent(Key, 200) -> Does not update Value if Key is already present.
+     * map.getOrDefault(Key, 50) -> If key isn't ppresent default Value is returned.
+     * map.putIfAbsent(Key, 20) -> Does not update Value if Key is already present.
      * for (var itr : map.entrySet()) { long K = itr.getKey(), V = itr.getValue(); }
      * -----------------------------------------------------------------------------
      */
@@ -33,7 +33,6 @@ public class Main implements Runnable {
     @Override
     public void run() {
         // Run Sieve(), FillFact() etc.
-
         try {
             int Coffee = MULTIPLE_TEST_CASES ? readInteger() : 1, Tea = 0;
             while (Coffee-- > 0 && Tea < INF) {
@@ -217,6 +216,14 @@ public class Main implements Runnable {
 
     public static long log(long a, long b) {
         return (long) (Math.log(a) / Math.log(b));
+    }
+
+    public static double log_precise(long a, long b) {
+        return Math.log(a) / Math.log(b);
+    }
+
+    public static double log_precise(double a, double b) {
+        return Math.log(a) / Math.log(b);
     }
 
     public static long ceil(long a, long b) {

@@ -24,7 +24,7 @@ public class Maths {
     }
 
     public static long mul(long a, long b) {
-        return (a * b) % MOD;
+        return ((a % MOD) * (b % MOD)) % MOD;
     }
 
     public static long div(long a, long b) {

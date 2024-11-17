@@ -1,4 +1,4 @@
-package Interesting_algorithms;
+package templates;
 /*  << Coder: Akash Sardar, Language:Java-21, 64-Bit >>  */
 
 import java.io.*;

@@ -1,9 +1,8 @@
-/*              << Coder: Akash_Sardar, Language: ♨️Java-21, 64-Bit >>              */
+/*----------------------<< Coder: Akash_Sardar, Language: ♨️Java-21, 64-Bit >>----------------------*/
 
 import java.io.*;
 import java.util.*;
 
-/*** THINK TWICE, CODE ONCE ***/
 public class Main implements Runnable {
 
     public static boolean MULTIPLE_TEST_CASES = true, DISPLAY_EXECUTION_TIME = false;
@@ -33,18 +32,18 @@ public class Main implements Runnable {
     @Override
     public void run() {
         // Run Sieve(), FillFact() etc.
+
         try {
-            int Coffee = MULTIPLE_TEST_CASES ? readInteger() : 1, Tea = 0;
-            while (Coffee-- > 0 && Tea < INF) {
+            int chicken = MULTIPLE_TEST_CASES ? readInteger() : 1, pizza = 0;
+            while (chicken-- > 0 && pizza < INF) {
                 long start = System.currentTimeMillis();
                 FastJavaCode();
                 long end = System.currentTimeMillis();
-                long diff = end - start;
-                if (!ONLINE_JUDGE && DISPLAY_EXECUTION_TIME && diff >= 0) {
-                    print("Time taken: " + (diff) + " ms.\n");
+                if (!ONLINE_JUDGE && DISPLAY_EXECUTION_TIME && end >= start) {
+                    print("Time taken: " + (end - start) + " ms.\n");
                 }
                 flush();
-                Tea++;
+                pizza++;
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -53,41 +52,6 @@ public class Main implements Runnable {
     }
 
     /*** ----------------UTILITY CLASSES & FUNCTIONS---------------- ***/
-
-    public static class Node {
-        int u, v;
-        long wt;
-
-        Node(int u, int v, long wt) {
-            this.u = u;
-            this.v = v;
-            this.wt = wt;
-        }
-
-        @Override
-        public String toString() {
-            return "[" + u + "-" + v + "," + wt + "] ";
-        }
-    }
-
-    public static <T> List<List<T>> getAdjList(int nodes) {
-        List<List<T>> adjList = new ArrayList<>();
-        for (int i = 0; i <= nodes; i++)
-            adjList.add(new ArrayList<>());
-        return adjList;
-    }
-
-    public static void addEdges(int[] edge, List<List<Integer>> adjList, boolean undirected) {
-        adjList.get(edge[0]).add(edge[1]);
-        if (undirected)
-            adjList.get(edge[1]).add(edge[0]);
-    }
-
-    public static void addWtEdges(int[] edge, List<List<Node>> adjList, boolean undirected) {
-        adjList.get(edge[0]).add(new Node(edge[0], edge[1], edge[2]));
-        if (undirected)
-            adjList.get(edge[1]).add(new Node(edge[1], edge[0], edge[2]));
-    }
 
     public static <T extends Comparable<T>> int compare(int i, int j, List<T> list) {
         return list.get(i).compareTo(list.get(j));
@@ -165,7 +129,7 @@ public class Main implements Runnable {
     }
 
     public static long mul(long a, long b) {
-        return (a * b) % MOD;
+        return ((a % MOD) * (b % MOD)) % MOD;
     }
 
     public static long div(long a, long b) {
@@ -275,17 +239,47 @@ public class Main implements Runnable {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < w; j++) {
                 for (int k = 0; k < m; k++) {
-                    c[i][j] += (a[i][k] * b[k][j]);
+                    // c[i][j] += (a[i][k] * b[k][j]);
+                    c[i][j] = add(c[i][j], mul(a[i][k], b[k][j]));
                 }
             }
         }
         return c;
     }
 
+    public static class Node {
+        int u, v;
+        long wt;
+
+        Node(int u, int v) {
+            this.u = u;
+            this.v = v;
+            this.wt = -INF;
+        }
+
+        Node(int u, int v, long wt) {
+            this.u = u;
+            this.v = v;
+            this.wt = wt;
+        }
+
+        @Override
+        public String toString() {
+            return wt == -INF ? "[" + u + "-" + v + "] " : "[" + u + "-" + v + "," + wt + "] ";
+        }
+    }
+
+    public static <T> List<List<T>> getAdjList(int n) {
+        List<List<T>> adjList = new ArrayList<>();
+        for (int i = 0; i <= n; i++)
+            adjList.add(new ArrayList<>());
+        return adjList;
+    }
+
     /*** ------------------DON'T CHANGE ANYTHING------------------- ***/
 
     public static void main(String[] args) throws IOException {
-        new Thread(null, new Main(), "Akash_Sardar_13-12-2000", 1 << 30).start();
+        new Thread(null, new Main(), "< Akash_Sardar_13/12/2000 >", 1 << 30).start();
     }
 
     /*** ----------------------JAVA FAST I/O----------------------- ***/

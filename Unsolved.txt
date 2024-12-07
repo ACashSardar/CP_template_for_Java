@@ -12,4 +12,5 @@ https://codeforces.com/contest/2024/problem/D
 https://codeforces.com/problemset/problem/1778/C
 https://codeforces.com/problemset/problem/2035/D
 https://codeforces.com/contest/1995/problem/D
-https://codeforces.com/contest/2028/problem/D
+https://codeforces.com/contest/2003/problem/D2
+https://www.codechef.com/problems/MODINDROME

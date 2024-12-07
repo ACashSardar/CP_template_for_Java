@@ -21,15 +21,15 @@ public class SegmentTree {
             seg[ind] = seg[2 * ind + 1] + seg[2 * ind + 2];
         }
 
-        public int query(int ind, int lo, int hi, int l, int r, int[] arr) {
+        public int query(int ind, int lo, int hi, int l, int r) {
             if (lo >= l && hi <= r) {
                 return seg[ind];
             } else if (hi < l || lo > r) {
                 return 0;
             }
             int mid = lo + (hi - lo) / 2;
-            int left = query(2 * ind + 1, lo, mid, l, r, arr);
-            int right = query(2 * ind + 2, mid + 1, hi, l, r, arr);
+            int left = query(2 * ind + 1, lo, mid, l, r);
+            int right = query(2 * ind + 2, mid + 1, hi, l, r);
             return left + right;
         }
 
@@ -67,15 +67,15 @@ public class SegmentTree {
             seg[ind] = Math.max(seg[2 * ind + 1], seg[2 * ind + 2]);
         }
 
-        public int query(int ind, int lo, int hi, int l, int r, int[] arr) {
+        public int query(int ind, int lo, int hi, int l, int r) {
             if (lo >= l && hi <= r) {
                 return seg[ind];
             } else if (hi < l || lo > r) {
                 return Integer.MIN_VALUE;
             }
             int mid = lo + (hi - lo) / 2;
-            int left = query(2 * ind + 1, lo, mid, l, r, arr);
-            int right = query(2 * ind + 2, mid + 1, hi, l, r, arr);
+            int left = query(2 * ind + 1, lo, mid, l, r);
+            int right = query(2 * ind + 2, mid + 1, hi, l, r);
             return Math.max(left, right);
         }
 
@@ -117,7 +117,7 @@ public class SegmentTree {
             seg[ind] = seg[2 * ind + 1] + seg[2 * ind + 2];
         }
 
-        public void update(int ind, int lo, int hi, int l, int r, int val, int[] arr) {
+        public void update(int ind, int lo, int hi, int l, int r, int val) {
             if (lazy[ind] != 0) {
                 seg[ind] += (hi - lo + 1) * lazy[ind];
                 if (lo != hi) {
@@ -138,12 +138,12 @@ public class SegmentTree {
                 return;
             }
             int mid = lo + (hi - lo) / 2;
-            update(2 * ind + 1, lo, mid, l, r, val, arr);
-            update(2 * ind + 2, mid + 1, hi, l, r, val, arr);
+            update(2 * ind + 1, lo, mid, l, r, val);
+            update(2 * ind + 2, mid + 1, hi, l, r, val);
             seg[ind] = seg[2 * ind + 1] + seg[2 * ind + 2];
         }
 
-        public int query(int ind, int lo, int hi, int l, int r, int[] arr) {
+        public int query(int ind, int lo, int hi, int l, int r) {
             if (lazy[ind] != 0) {
                 seg[ind] += (hi - lo + 1) * lazy[ind];
                 if (lo != hi) {
@@ -158,8 +158,8 @@ public class SegmentTree {
                 return 0;
             }
             int mid = lo + (hi - lo) / 2;
-            int left = query(2 * ind + 1, lo, mid, l, r, arr);
-            int right = query(2 * ind + 2, mid + 1, hi, l, r, arr);
+            int left = query(2 * ind + 1, lo, mid, l, r);
+            int right = query(2 * ind + 2, mid + 1, hi, l, r);
             return left + right;
         }
     }
@@ -173,12 +173,12 @@ public class SegmentTree {
         int l = 0, r = 5;
 
         // Before update
-        int ans = st.query(0, 0, n - 1, l, r, arr);
+        int ans = st.query(0, 0, n - 1, l, r);
         System.out.println(ans);
 
         // After update
         st.update(0, 0, n - 1, 2, 16, arr);
-        ans = st.query(0, 0, n - 1, l, r, arr);
+        ans = st.query(0, 0, n - 1, l, r);
         System.out.println(ans);
     }
 

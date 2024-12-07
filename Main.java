@@ -23,7 +23,6 @@ public class Main implements Runnable {
      * for (var itr : map.entrySet()) { long K = itr.getKey(), V = itr.getValue(); }
      * -----------------------------------------------------------------------------
      */
-
     public static void FastJavaCode() throws IOException {
 
     }
@@ -31,11 +30,10 @@ public class Main implements Runnable {
     /*** ---------------PRECOMPUTE INSIDE RUN METHOD--------------- ***/
     @Override
     public void run() {
-        // Run Sieve(), FillFact() etc.
 
         try {
-            int chicken = MULTIPLE_TEST_CASES ? readInteger() : 1, pizza = 0;
-            while (chicken-- > 0 && pizza < INF) {
+            int CNT = MULTIPLE_TEST_CASES ? readInteger() : 1;
+            for (int tc = 0; tc < CNT; tc++) {
                 long start = System.currentTimeMillis();
                 FastJavaCode();
                 long end = System.currentTimeMillis();
@@ -43,7 +41,6 @@ public class Main implements Runnable {
                     print("Time taken: " + (end - start) + " ms.\n");
                 }
                 flush();
-                pizza++;
             }
         } catch (Exception ex) {
             ex.printStackTrace();
